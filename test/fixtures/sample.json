@@ -1,0 +1,736 @@
+{
+ "meta": {
+  "generated_at": "2026-09-22",
+  "content_hash": "e8a46d3acfa9e3ed3ae80a77157b1e22edb34f9f7debd6e400cff780ff46d54f",
+  "term": {
+   "academic_year": "2026-2027",
+   "term_tr": "Bahar",
+   "agreements_list_title": "ERASMUS+ STUDENT MOBILITY FOR STUDIES INTER-INSTITUTIONAL AGREEMENTS 2026-2027 SPRING SEMESTER 14.08.2026",
+   "agreements_list_date": "14.08.2026"
+  },
+  "stats": {
+   "schools": 180,
+   "programs": 550,
+   "countries": 23,
+   "eche_matched": 180,
+   "geocoded": 180,
+   "links_ok": 265,
+   "links_total": 298
+  },
+  "files": {
+   "general": "general.json",
+   "schools": "schools.json",
+   "programs_csv": "programs.csv"
+  }
+ },
+ "general": {
+  "generated_at": "2026-09-22",
+  "term": {
+   "academic_year": "2026-2027",
+   "term_tr": "Bahar",
+   "agreements_list_title": "ERASMUS+ STUDENT MOBILITY FOR STUDIES INTER-INSTITUTIONAL AGREEMENTS 2026-2027 SPRING SEMESTER 14.08.2026",
+   "agreements_list_date": "14.08.2026"
+  },
+  "announcement": {
+   "title": "2026 KA131 Sözleşme Dönemi (2026-1-TR01-KA131-HED-000408524) 2026-2027 Akademik Yılı Bahar Dönemi Erasmus+ Öğrenim Hareketliliği Başvuruları İlanı",
+   "published": "18.08.2026",
+   "academic_year": "2026-2027",
+   "term_tr": "Bahar",
+   "calendar": [
+    {
+     "label": "Başvuru İlan Süresi",
+     "value": "18 Ağustos 2026 – 21 Eylül 2026"
+    },
+    {
+     "label": "Başvuru süresi",
+     "value": "7-21 Eylül 2026 (Online başvuru sistemi yalnızca 7 Eylül 2026 saat 10:00 ile 21 Eylül 2026 saat 16:59 arasında açık olacaktır.)"
+    },
+    {
+     "label": "Başvuru Sonuçlarının İlan Edilmesi",
+     "value": "28 Eylül 2026"
+    },
+    {
+     "label": "İtiraz ve iptal süreci",
+     "value": "28 Eylül 2026– 5 Ekim 2026"
+    }
+   ],
+   "min_gpa": {
+    "lisans": 2.2,
+    "lisansustu": 2.5
+   },
+   "scoring": [
+    {
+     "criterion": "Akademik başarı düzeyi",
+     "points": "%50 (toplam 100 puan üzerinden)"
+    },
+    {
+     "criterion": "Dil seviyesi",
+     "points": "%50 (toplam 100 puan üzerinden)"
+    },
+    {
+     "criterion": "Şehit ve gazi çocuklarına",
+     "points": "+15 puan"
+    },
+    {
+     "criterion": "Engelli öğrencilere (engelliliğin belgelenmesi kaydıyla)",
+     "points": "+10 puan"
+    },
+    {
+     "criterion": "2828 Sayılı Sosyal Hizmetler Kanunu ile 5395 sayılı Çocuk Koruma Kanunu Kapsamında haklarında geçmişte veya halen korunma, bakım veya barınma kararı alınmış öğrencilere",
+     "points": "+10 puan"
+    },
+    {
+     "criterion": "Kendileri veya 1. derece yakınları (öz/üvey) AFAD’dan afetzede yardımı alanlar",
+     "points": "+10 puan"
+    },
+    {
+     "criterion": "Aynı proje türü kapsamında daha önce yararlanma (hibeli veya hibesiz)",
+     "points": "-10 puan"
+    },
+    {
+     "criterion": "Vatandaşı olunan ülkede hareketliliğe katılma",
+     "points": "-10 puan"
+    },
+    {
+     "criterion": "Hareketliliğe seçildiği halde süresinde feragat bildiriminde bulunmaksızın hareketliliğe katılmama",
+     "points": "-10 puan"
+    },
+    {
+     "criterion": "Hareketliliğe seçilen öğrenciler için: Yükseköğretim kurumu tarafından hareketlilikle ilgili olarak düzenlenen toplantılara/eğitimlere mazeretsiz katılmama (öğrencinin Erasmus’a tekrar başvurması halinde uygulanır)",
+     "points": "-5 puan"
+    },
+    {
+     "criterion": "Dil sınavına gireceğini beyan edip mazeretsiz girmeme (öğrencinin Erasmus’a tekrar başvurması halinde uygulanır)",
+     "points": "-5 puan"
+    }
+   ],
+   "monthly_grant": [
+    {
+     "group": "1. ve 2. Grup Ülkeler",
+     "countries": [
+      "Almanya",
+      "Avusturya",
+      "Belçika",
+      "Çek Cumhuriyeti",
+      "Danimarka",
+      "Estonya",
+      "Finlandiya",
+      "Fransa",
+      "Güney Kıbrıs Rum Yönetimi",
+      "Hollanda",
+      "İrlanda",
+      "İspanya",
+      "İsveç",
+      "İtalya",
+      "İzlanda",
+      "Letonya",
+      "Lihtenştayn",
+      "Lüksemburg",
+      "Malta",
+      "Norveç",
+      "Portekiz",
+      "Slovakya",
+      "Slovenya",
+      "Yunanistan"
+     ],
+     "eur": 600
+    },
+    {
+     "group": "3. Grup Ülkeler",
+     "countries": [
+      "Bulgaristan",
+      "Hırvatistan",
+      "Kuzey Makedonya",
+      "Litvanya",
+      "Macaristan",
+      "Polonya",
+      "Romanya",
+      "Sırbistan",
+      "Türkiye"
+     ],
+     "eur": 450
+    }
+   ],
+   "travel_grant": [
+    {
+     "band": "10 ila 99 KM arasında",
+     "min_km": 10,
+     "max_km": 99,
+     "standard_eur": 28,
+     "green_eur": 56
+    },
+    {
+     "band": "100 ila 499 KM arasında",
+     "min_km": 100,
+     "max_km": 499,
+     "standard_eur": 211,
+     "green_eur": 285
+    },
+    {
+     "band": "500 ila 1999 KM arasında",
+     "min_km": 500,
+     "max_km": 1999,
+     "standard_eur": 309,
+     "green_eur": 417
+    },
+    {
+     "band": "2000 ila 2999 KM arasında",
+     "min_km": 2000,
+     "max_km": 2999,
+     "standard_eur": 395,
+     "green_eur": 535
+    },
+    {
+     "band": "3000 ila 3999 KM arasında",
+     "min_km": 3000,
+     "max_km": 3999,
+     "standard_eur": 580,
+     "green_eur": 785
+    },
+    {
+     "band": "4000 ila 7999 KM arasında",
+     "min_km": 4000,
+     "max_km": 7999,
+     "standard_eur": 1188,
+     "green_eur": 1188
+    },
+    {
+     "band": "8000 KM veya daha fazla",
+     "min_km": 8000,
+     "max_km": null,
+     "standard_eur": 1735,
+     "green_eur": 1735
+    }
+   ],
+   "fewer_opportunities_monthly_eur": 250,
+   "faculty_grant_quota": {
+    "Güzel Sanatlar ve Tasarım Fakültesi": 6,
+    "İşletme Fakültesi": 5,
+    "Mühendislik Fakültesi": 5,
+    "İletişim Fakültesi": 3,
+    "Fen Edebiyat Fakültesi": 3,
+    "Hukuk Fakültesi": 3,
+    "Tıp Fakültesi": 1,
+    "Sağlık Bilimleri Fakültesi": 1,
+    "Uygulamalı Yönetim Bilimleri Yüksekokulu": 1,
+    "Lisansüstü Eğitim Enstitüsü (Yüksek lisans seviyesi)": 1,
+    "Lisansüstü Eğitim Enstitüsü (Doktora seviyesi)": 1
+   },
+   "faculty_grant_quota_total": 30,
+   "rules": {
+    "tuition": "Erasmus+ programı kapsamında yurtdışında öğrenim gören öğrenciler bu döneme ait öğretim ücretlerini akademik takvimde belirtilen tarihlere göre İEÜ’ye öderler. Yurtdışındaki üniversiteye ayrıca öğretim ücreti ödemezler. Ancak barınma, ulaşım, kişisel harcamalar, beslenme, sağlık sigortası gibi tüm masraflar öğrencinin sorumluluğundadır.",
+    "first_year": "İEÜ Yabancı Diller Yüksekokulu İngilizce Hazırlık Programında veya İEÜ Lisans programlarının birinci sınıfında okuyan öğrenciler, öğrenim hareketliliğinden yararlanamaz. İkinci sınıfta Erasmus+ ve diğer uluslararası değişim programlarından yararlanabilmek için öğrenciler başvurularını öğrenimlerinin birinci yılının birinci döneminde,  genel not ortalaması (GNO) oluştuktan sonra yapabilirler.",
+    "language_doc": "Başvuru sırasında ONAYLI İngilizce dil düzeyini belirten sonuç belgesini yüklemeyen öğrencilerin başvuruları kabul edilmeyecektir.",
+    "ects": "Erasmus+ öğrenim hareketliliğinden yararlanmak isteyen öğrencilerin, bir yarı yılda en az 30 AKTS kredisi alma yükümlülüğü bulunmaktadır. Yurt dışındaki partner üniversitenin akademik programına bağlı olarak, bir yarı yılda alınabilecek dersler toplam en çok 33 AKTS, en az 27 AKTS olabilir.",
+    "selection": "Başvurular, yalnızca Genel Not Ortalaması (GNO) ve İngilizce yabancı dil puanı esas alınarak değerlendirilmektedir. TurnaPortal'da İngilizce dil belgesi talep edilmesi, gidilecek üniversitedeki eğitim dilinin İngilizce olduğunun garantisini vermemektedir.",
+    "payment": "Erasmus+ hibesi partner üniversiteler tarafından öğrenciye yollanan kabul mektubundaki tarihe göre hesaplanır ve %70 oranındaki tutarı öğrencinin hesabına yatırılır. Hareketliliğin tamamlanmasını ve öğrencinin  UİOM’ne belgelerini teslim etmesini takiben toplam hibe hesaplamaları, katılım sertifikasında ve imzalanan hibe sözleşmesinde belirtilen tarihler karşılaştırılarak nihai süre ve başarı durumuna göre yapılır. Son hesaplamalara göre, iade edilmesi gereken tutar varsa öğrenciden geri ödemesi talep edilir.",
+    "two_thirds": "Erasmus+ programı kapsamında partner üniversitede aldıkları derslerin toplam kredisinin 2/3’ünden başarılı olmayan öğrencilerin, kalan hibe ödemeleri yapılmaz. Son hesaplamalara göre, iade edilmesi gereken tutar varsa öğrenciden geri ödemesi talep edilir.",
+    "language_research": "Bazı üniversitelerde eğitim dili olarak yerel dilin kullanılması nedeniyle, ERASMUS+ programı kapsamında öğrenim görmek istenilen üniversitenin Eğitim Dili başvuru yapılmadan önce mutlaka dikkatli bir şekilde araştırılmalıdır.  Eğitim diline ilişkin araştırma yapmak ve ilgili şartları sağlamak tamamen öğrencinin sorumluluğundadır. Eğitim dili nedeniyle ilan edilen feragat tarihinden sonra hareketliliğinden vazgeçecek olan öğrencilerin, bir sonraki Erasmus hareketliliği başvurularında -10 puan kesintisi uygulanacaktır.",
+    "costs": "Öğrencinin yurt dışına çıkış işlemleri, yurt dışında kalınacak yer temin edilmesi, pasaport ve vize işlemleri öğrencinin sorumluluğundadır.",
+    "school_quota": "Her üniversite için ayrılan kontenjanlar, TurnaPortal üzerinde başvuru aşamasında görüntülenebilecektir."
+   }
+  },
+  "links": {
+   "turnaportal": "https://turnaportal.ua.gov.tr/giris?returnUrl=%2F",
+   "department_coordinators": "https://ects.ieu.edu.tr/new/idari.php?id=29",
+   "documents": {
+    "ECTS Not Dönüşümü": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/oia.ieu.edu.tr/3730_1732531371.pdf",
+    "Erasmus+ Öğrenim Hareketliliği Sık Sorulan Sorular": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11059_1760690643.pdf",
+    "Ders Seçim Kuralları": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11059_1741928412.pdf",
+    "TurnaPortal Başvuru Kılavuzu": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11059_1741928553.pdf",
+    "Çevrimiçi Öğrenim Anlaşması (OLA)": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11059_1741928738.pdf",
+    "Uluslararası Değişim Programları Koordinatörü Bilgilendirme Kitapçığı": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11059_1746775920.pdf"
+   }
+  },
+  "faq_ieu": [
+   {
+    "q": "Hibesiz Olarak Hareketlilikten Yararlanmak Mümkün mü?",
+    "a": "Hibe kontenjanından yararlanamayan fakat anlaşmalı üniversitelerin kontenjanlarına göre öğrenim hareketliliği hakkı olan öğrenciler diledikleri takdirde Erasmus+ hibesi almamak kaydıyla (hibesiz olarak) programdan yararlanabileceklerdir. Hibesiz Erasmus+ öğrencileri, maddi destek almamalarının dışında, hibeli Erasmus+ öğrencileriyle aynı haklara sahip ve yükümlülüklere tabidir."
+   },
+   {
+    "q": "Gidilen Ünivesiteye Ücret Ödenir mi?",
+    "a": "Erasmus+ öğrencileri misafir oldukları üniversitede öğrenim ücreti ödemezler. Ancak ulaşım, yemek, konaklama gibi yaşam masrafları öğrencinin kendi sorumluluğundadır."
+   },
+   {
+    "q": "Elenirsem Bir Sonraki Dönem Tekrar Başvurabilir miyim?",
+    "a": "Bir önceki dönemde elenmiş olmak tekrar başvurmayı engellemez. Ancak öğrencilerin elenmeleri durumunda hakları bir sonraki döneme aktarılmaz."
+   },
+   {
+    "q": "Yurtdışında alınan derslere İEÜ’de denklik veriliyor mu?",
+    "a": "Yurtdışında alacağınız dersleri, Uluslararası değişim programı bölüm koordinatörünüze danışarak belirlemelisiniz. Yurtdışında aldığınız dersler, yönetmelik gereğince üniversitemiz not sistemine çevrilerek İEÜ not ortalamanıza dahil edilmekte ve partner kurumda aldığınız dersin adı ve koduyla transkriptinize işlenmektedir."
+   },
+   {
+    "q": "Gittiğim Üniversitede Hangi Dilde Ders Alacağım?",
+    "a": "Avrupa’daki üniversitelerin çoğu kendi dillerinde eğitim yapmakta olup, sınırlı sayıda üniversite İngilizce ders seçeneği sunmakta veya üniversitemizde olduğu gibi tamamen İngilizce eğitim vermektedir. Başvuru yapmadan önce tercih edilen üniversitenin eğitim dili araştırılmalıdır."
+   },
+   {
+    "q": "Erasmus+ Programına Katılırsam Okulum Uzar mı?",
+    "a": "Böyle bir genelleme yapılamaz. Temel amaç maksimum düzeyde ders eşdeğerliğini sağlayarak programdan faydalanmaktır. Okulunuzun zamanında bitmesi sizin yurtdışında geçireceğiniz dönemdeki akademik başarınıza bağlıdır. Ancak Türkçe, Tarih ve 2. yabancı dil gibi zorunlu dersler yurtdışında alınamayacağından, yaz okulunda veya muafiyet sınavıyla telafisi gerekebilir."
+   },
+   {
+    "q": "ÇAP Öğrencileri Erasmus+ Programına Başvurabilir mi?",
+    "a": "ÇAP öğrencileri de programdan faydalanmak için başvuruda bulunabilirler. Ancak hem Anadal hem Çift Anadal olmak üzere iki programdan aynı anda başvuru yapılamaz. Öğrencilerin tek bir program üzerinden başvuru yapmaları gerekir."
+   },
+   {
+    "q": "Nasıl Vize Alacağım?",
+    "a": "Başvuru dosyanız yurtdışındaki üniversiteye iletildikten sonra, sizi misafir edecek olan üniversite kabul mektubunuzu gönderir. Vize için en önemli belge kabul mektubudur. Bu belge geldikten sonra, ilgili ülkenin Büyükelçiliği / Konsolosluğu ile temasa geçip, vize ile ilgili belgeler toplanarak randevu alınması ve şahsen başvuru yapılması zorunludur. Vize aşamasında gerekli evraklar için Uluslararası ilişkiler Ofisi Müdürülüğü’nden destek alınır, ancak AB ülkelerinin vize prosedürü gereğince İEÜ sizin adınıza vizeye başvuramaz."
+   }
+  ],
+  "sources": {
+   "agreements_page": "https://www.ieu.edu.tr/international/tr/erasmus-anlasmalari-ve-kontenjanlar",
+   "agreements_xls": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11066_1786717278_254.xls",
+   "announcement": "https://www.ieu.edu.tr/international/tr/announcements/type/read/id/13750",
+   "outgoing_page": "https://www.ieu.edu.tr/international/tr/erasmus-ogrenci-ogrenim-hareketliligi",
+   "faq_pdf": "https://phoenix.ieu.edu.tr/betanix/uploads/cms/international.ieu.edu.tr/11059_1760690643.pdf",
+   "eche_api": "https://eche-list.erasmuswithoutpaper.eu/api/",
+   "geocoder": "https://nominatim.openstreetmap.org/search"
+  },
+  "stats": {
+   "schools": 180,
+   "programs": 550,
+   "countries": 23,
+   "eche_matched": 180,
+   "geocoded": 180,
+   "links_ok": 265,
+   "links_total": 298
+  },
+  "warnings": [
+   "En dış bölge (hibe kuralı ilanda yok): Universite de la Reunion"
+  ]
+ },
+ "schools": [
+  {
+   "id": "DBERLIN01",
+   "name": "Freie Universität Berlin",
+   "erasmus_code": "D BERLIN01",
+   "country_en": "Germany",
+   "country_tr": "Almanya",
+   "city": "Berlin",
+   "eche": {
+    "legal_name": "FREIE UNIVERSITAET BERLIN",
+    "city": "BERLIN",
+    "postal_code": "14195",
+    "country_code": "DE",
+    "webpage": "www.fu-berlin.de",
+    "oid": "E10209510",
+    "pic": "999994826",
+    "eche_end": "2029-12-31"
+   },
+   "websites": [
+    "https://www.fu-berlin.de/en/studium/international/studium_fu/auslandssemester/erasmus_in/index.html",
+    "https://www.wiwiss.fu-berlin.de/studium-lehre/incoming/index.html"
+   ],
+   "programs": [
+    {
+     "host_department": "ECONOMICS",
+     "ieu_department_en": "Economics",
+     "ieu_department_tr": "Ekonomi",
+     "ieu_faculty": "İşletme Fakültesi",
+     "grant_quota_unit": "İşletme Fakültesi",
+     "grant_quota_unit_seats": 5,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "GERMAN-ENGLISH",
+     "languages_tr": [
+      "Almanca",
+      "İngilizce"
+     ],
+     "notes_en": "German language skills of B2 if students wish to participate in German taught courses. Courses in English are offered every semester but they are limited. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "BUSINESS ADMINISTRATION",
+     "ieu_department_en": "Business Administration",
+     "ieu_department_tr": "İşletme",
+     "ieu_faculty": "İşletme Fakültesi",
+     "grant_quota_unit": "İşletme Fakültesi",
+     "grant_quota_unit_seats": 5,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "GERMAN-ENGLISH",
+     "languages_tr": [
+      "Almanca",
+      "İngilizce"
+     ],
+     "notes_en": "German language skills of B2 if students wish to participate in German taught courses. Courses in English are offered every semester but they are limited. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "BUSINESS ADMINISTRATION",
+     "ieu_department_en": "International Trade And Finance",
+     "ieu_department_tr": "Uluslararası Ticaret ve Finansman",
+     "ieu_faculty": "İşletme Fakültesi",
+     "grant_quota_unit": "İşletme Fakültesi",
+     "grant_quota_unit_seats": 5,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "GERMAN-ENGLISH",
+     "languages_tr": [
+      "Almanca",
+      "İngilizce"
+     ],
+     "notes_en": "German language skills of B2 if students wish to participate in German taught courses. Courses in English are offered every semester but they are limited. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    }
+   ],
+   "outermost_region": false,
+   "coords": [
+    52.5173885,
+    13.3951309
+   ],
+   "distance_km_from_izmir": 1892,
+   "grant": {
+    "group": "1. ve 2. Grup Ülkeler",
+    "monthly_eur": 600
+   },
+   "travel_grant": {
+    "band": "500 ila 1999 KM arasında",
+    "standard_eur": 309,
+    "green_eur": 417
+   },
+   "link_status": {
+    "https://www.fu-berlin.de/en/studium/international/studium_fu/auslandssemester/erasmus_in/index.html": 200,
+    "https://www.wiwiss.fu-berlin.de/studium-lehre/incoming/index.html": 200
+   },
+   "faq": [
+    {
+     "q": "Bu okula hangi bölümlerden gidilebilir?",
+     "a": "Lisans: Ekonomi, İşletme, Uluslararası Ticaret ve Finansman",
+     "source": "İEÜ anlaşma listesi"
+    },
+    {
+     "q": "Eğitim dili ne?",
+     "a": "Almanca, İngilizce — Not: German language skills of B2 if students wish to participate in German taught courses. Courses in English are offered every semester but they are limited. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)",
+     "source": "İEÜ anlaşma listesi"
+    },
+    {
+     "q": "İEÜ'ye ücret ödeyecek miyim?",
+     "a": "Erasmus+ programı kapsamında yurtdışında öğrenim gören öğrenciler bu döneme ait öğretim ücretlerini akademik takvimde belirtilen tarihlere göre İEÜ’ye öderler. Yurtdışındaki üniversiteye ayrıca öğretim ücreti ödemezler. Ancak barınma, ulaşım, kişisel harcamalar, beslenme, sağlık sigortası gibi tüm masraflar öğrencinin sorumluluğundadır.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Freie Universität Berlin okuluna öğrenim ücreti ödeyecek miyim?",
+     "a": "Hayır. Erasmus+ öğrencileri misafir oldukları üniversitede öğrenim ücreti ödemez. Dönem katkı payı veya öğrenci birliği gibi küçük harçlar okula göre değişebilir; bu okul için henüz veri yok.",
+     "source": "İEÜ SSS + başvuru ilanı"
+    },
+    {
+     "q": "Ne kadar hibe alırım?",
+     "a": "Almanya 1. ve 2. Grup Ülkeler içinde: aylık 600 €. Seyahat desteği (İzmir–Berlin ≈ 1892 km, okulun resmi adres şehrine göre; 500 ila 1999 KM arasında): standart 309 €, yeşil seyahat 417 €. İmkânı kısıtlı öğrencilere aylık +250 € ilave destek. Hibenin %70'i gitmeden yatar, kalanı dönüşte hesaplanır.",
+     "source": "İEÜ başvuru ilanı + ECHE şehir + mesafe hesabı"
+    },
+    {
+     "q": "Kontenjan kaç kişi?",
+     "a": "Okul bazındaki kontenjan TURNAPortal'da, başvuru döneminde e-Devlet ile girişte görünür: https://turnaportal.ua.gov.tr/giris?returnUrl=%2F . Bu dönemin fakülte bazında hibe kontenjanı: İşletme Fakültesi: 5 kişi.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Başvuru şartları neler?",
+     "a": "Lisans için GNO en az 2.20, lisansüstü için en az 2.50. Onaylı İngilizce dil belgesi zorunlu. İEÜ Yabancı Diller Yüksekokulu İngilizce Hazırlık Programında veya İEÜ Lisans programlarının birinci sınıfında okuyan öğrenciler, öğrenim hareketliliğinden yararlanamaz. İkinci sınıfta Erasmus+ ve diğer uluslararası değişim programlarından yararlanabilmek için öğrenciler başvurularını öğrenimlerinin birinci yılının birinci döneminde,  genel not ortalaması (GNO) oluştuktan sonra yapabilirler.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Başvuru ne zaman?",
+     "a": "Başvuru İlan Süresi: 18 Ağustos 2026 – 21 Eylül 2026; Başvuru süresi: 7-21 Eylül 2026 (Online başvuru sistemi yalnızca 7 Eylül 2026 saat 10:00 ile 21 Eylül 2026 saat 16:59 arasında açık olacaktır.); Başvuru Sonuçlarının İlan Edilmesi: 28 Eylül 2026; İtiraz ve iptal süreci: 28 Eylül 2026– 5 Ekim 2026",
+     "source": "İEÜ başvuru ilanı"
+    }
+   ],
+   "missing": [
+    "Karşı okulun küçük harçları (dönem katkı payı, öğrenci birliği vb.)",
+    "Karşı okulun nominasyon/başvuru son tarihleri",
+    "Ders kataloğu linki",
+    "Konaklama bilgisi",
+    "Okul bazında kontenjan (TURNAPortal'da, e-Devlet ile)"
+   ]
+  },
+  {
+   "id": "BGBLAGOEV02",
+   "name": "Southwest University Neofit Rilski",
+   "erasmus_code": "BG BLAGOEV02",
+   "country_en": "Bulgaria",
+   "country_tr": "Bulgaristan",
+   "city": "Blagoevgrad",
+   "eche": {
+    "legal_name": "SOUTH-WEST UNIVERSITY NEOFIT RILSKI",
+    "city": "BLAGOEVGRAD",
+    "postal_code": "2700",
+    "country_code": "BG",
+    "webpage": "www.swu.bg",
+    "oid": "E10208855",
+    "pic": "999866980",
+    "eche_end": "2029-12-31"
+   },
+   "websites": [
+    "https://erasmus.swu.bg/incoming-students/",
+    "https://erasmus.swu.bg/incoming-students/course-catalog/"
+   ],
+   "programs": [
+    {
+     "host_department": "BUSINESS STUDIES",
+     "ieu_department_en": "Business Administration",
+     "ieu_department_tr": "İşletme",
+     "ieu_faculty": "İşletme Fakültesi",
+     "grant_quota_unit": "İşletme Fakültesi",
+     "grant_quota_unit_seats": 5,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "BULGARIAN-ENGLISH",
+     "languages_tr": [
+      "Bulgarca",
+      "İngilizce"
+     ],
+     "notes_en": "Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "BUSINESS STUDIES",
+     "ieu_department_en": "International Trade And Finance",
+     "ieu_department_tr": "Uluslararası Ticaret ve Finansman",
+     "ieu_faculty": "İşletme Fakültesi",
+     "grant_quota_unit": "İşletme Fakültesi",
+     "grant_quota_unit_seats": 5,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "BULGARIAN-ENGLISH",
+     "languages_tr": [
+      "Bulgarca",
+      "İngilizce"
+     ],
+     "notes_en": "Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "BUSINESS STUDIES",
+     "ieu_department_en": "Business Administration (Mba)",
+     "ieu_department_tr": "İşletme (MBA)",
+     "ieu_faculty": "İşletme Fakültesi",
+     "grant_quota_unit": "Lisansüstü Eğitim Enstitüsü (Yüksek lisans seviyesi)",
+     "grant_quota_unit_seats": 1,
+     "level_en": "Master",
+     "level_tr": "Yüksek Lisans",
+     "language_raw": "BULGARIAN-ENGLISH",
+     "languages_tr": [
+      "Bulgarca",
+      "İngilizce"
+     ],
+     "notes_en": "Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "MATHEMATICS",
+     "ieu_department_en": "Mathematics",
+     "ieu_department_tr": "Matematik",
+     "ieu_faculty": "Fen Edebiyat Fakültesi",
+     "grant_quota_unit": "Fen Edebiyat Fakültesi",
+     "grant_quota_unit_seats": 3,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "BULGARIAN-ENGLISH",
+     "languages_tr": [
+      "Bulgarca",
+      "İngilizce"
+     ],
+     "notes_en": "Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students.   (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "LANGUAGES",
+     "ieu_department_en": "English Translation And Interpreting",
+     "ieu_department_tr": "İngilizce Mütercim ve Tercümanlık",
+     "ieu_faculty": "Fen Edebiyat Fakültesi",
+     "grant_quota_unit": "Fen Edebiyat Fakültesi",
+     "grant_quota_unit_seats": 3,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "BULGARIAN-ENGLISH",
+     "languages_tr": [
+      "Bulgarca",
+      "İngilizce"
+     ],
+     "notes_en": "Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students.  (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    },
+    {
+     "host_department": "PHYSIOTHERAPY",
+     "ieu_department_en": "Physiotherapy And Rehabilitation",
+     "ieu_department_tr": "Fizyoterapi ve Rehabilitasyon",
+     "ieu_faculty": "Sağlık Bilimleri Fakültesi",
+     "grant_quota_unit": "Sağlık Bilimleri Fakültesi",
+     "grant_quota_unit_seats": 1,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "BULGARIAN-ENGLISH",
+     "languages_tr": [
+      "Bulgarca",
+      "İngilizce"
+     ],
+     "notes_en": "Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students.  (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    }
+   ],
+   "outermost_region": false,
+   "coords": [
+    42.0111077,
+    23.0906457
+   ],
+   "distance_km_from_izmir": 526,
+   "grant": {
+    "group": "3. Grup Ülkeler",
+    "monthly_eur": 450
+   },
+   "travel_grant": {
+    "band": "500 ila 1999 KM arasında",
+    "standard_eur": 309,
+    "green_eur": 417
+   },
+   "link_status": {
+    "https://erasmus.swu.bg/incoming-students/": 200,
+    "https://erasmus.swu.bg/incoming-students/course-catalog/": 200
+   },
+   "faq": [
+    {
+     "q": "Bu okula hangi bölümlerden gidilebilir?",
+     "a": "Lisans: İşletme, Uluslararası Ticaret ve Finansman, Matematik, İngilizce Mütercim ve Tercümanlık, Fizyoterapi ve Rehabilitasyon | Yüksek Lisans: İşletme (MBA)",
+     "source": "İEÜ anlaşma listesi"
+    },
+    {
+     "q": "Eğitim dili ne?",
+     "a": "Bulgarca, İngilizce — Not: Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students.   (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.) / Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students.  (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.) / Although, most of the courses are held in Bulgarian, SWU offers some English-taught courses to all incoming Erasmus+ students. (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)",
+     "source": "İEÜ anlaşma listesi"
+    },
+    {
+     "q": "İEÜ'ye ücret ödeyecek miyim?",
+     "a": "Erasmus+ programı kapsamında yurtdışında öğrenim gören öğrenciler bu döneme ait öğretim ücretlerini akademik takvimde belirtilen tarihlere göre İEÜ’ye öderler. Yurtdışındaki üniversiteye ayrıca öğretim ücreti ödemezler. Ancak barınma, ulaşım, kişisel harcamalar, beslenme, sağlık sigortası gibi tüm masraflar öğrencinin sorumluluğundadır.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Southwest University Neofit Rilski okuluna öğrenim ücreti ödeyecek miyim?",
+     "a": "Hayır. Erasmus+ öğrencileri misafir oldukları üniversitede öğrenim ücreti ödemez. Dönem katkı payı veya öğrenci birliği gibi küçük harçlar okula göre değişebilir; bu okul için henüz veri yok.",
+     "source": "İEÜ SSS + başvuru ilanı"
+    },
+    {
+     "q": "Ne kadar hibe alırım?",
+     "a": "Bulgaristan 3. Grup Ülkeler içinde: aylık 450 €. Seyahat desteği (İzmir–Blagoevgrad ≈ 526 km, okulun resmi adres şehrine göre; 500 ila 1999 KM arasında): standart 309 €, yeşil seyahat 417 €. İmkânı kısıtlı öğrencilere aylık +250 € ilave destek. Hibenin %70'i gitmeden yatar, kalanı dönüşte hesaplanır.",
+     "source": "İEÜ başvuru ilanı + ECHE şehir + mesafe hesabı"
+    },
+    {
+     "q": "Kontenjan kaç kişi?",
+     "a": "Okul bazındaki kontenjan TURNAPortal'da, başvuru döneminde e-Devlet ile girişte görünür: https://turnaportal.ua.gov.tr/giris?returnUrl=%2F . Bu dönemin fakülte bazında hibe kontenjanı: Fen Edebiyat Fakültesi: 3 kişi; Lisansüstü Eğitim Enstitüsü (Yüksek lisans seviyesi): 1 kişi; Sağlık Bilimleri Fakültesi: 1 kişi; İşletme Fakültesi: 5 kişi.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Başvuru şartları neler?",
+     "a": "Lisans için GNO en az 2.20, lisansüstü için en az 2.50. Onaylı İngilizce dil belgesi zorunlu. İEÜ Yabancı Diller Yüksekokulu İngilizce Hazırlık Programında veya İEÜ Lisans programlarının birinci sınıfında okuyan öğrenciler, öğrenim hareketliliğinden yararlanamaz. İkinci sınıfta Erasmus+ ve diğer uluslararası değişim programlarından yararlanabilmek için öğrenciler başvurularını öğrenimlerinin birinci yılının birinci döneminde,  genel not ortalaması (GNO) oluştuktan sonra yapabilirler.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Başvuru ne zaman?",
+     "a": "Başvuru İlan Süresi: 18 Ağustos 2026 – 21 Eylül 2026; Başvuru süresi: 7-21 Eylül 2026 (Online başvuru sistemi yalnızca 7 Eylül 2026 saat 10:00 ile 21 Eylül 2026 saat 16:59 arasında açık olacaktır.); Başvuru Sonuçlarının İlan Edilmesi: 28 Eylül 2026; İtiraz ve iptal süreci: 28 Eylül 2026– 5 Ekim 2026",
+     "source": "İEÜ başvuru ilanı"
+    }
+   ],
+   "missing": [
+    "Karşı okulun küçük harçları (dönem katkı payı, öğrenci birliği vb.)",
+    "Karşı okulun nominasyon/başvuru son tarihleri",
+    "Ders kataloğu linki",
+    "Konaklama bilgisi",
+    "Okul bazında kontenjan (TURNAPortal'da, e-Devlet ile)"
+   ]
+  },
+  {
+   "id": "FSTDENI01",
+   "name": "Universite de la Reunion",
+   "erasmus_code": "F ST-DENI01",
+   "country_en": "France",
+   "country_tr": "Fransa",
+   "city": "Saint Denis De La Reunion",
+   "eche": {
+    "legal_name": "UNIVERSITE DE LA REUNION",
+    "city": "SAINT DENIS DE LA REUNION CEDEX 9",
+    "postal_code": "97715",
+    "country_code": "FR",
+    "webpage": "http://www.univ-reunion.fr",
+    "oid": "E10207774",
+    "pic": "999557453",
+    "eche_end": "2029-12-31"
+   },
+   "websites": [
+    "https://www.univ-reunion.fr/en/network/come-and-study-at-the-university-of-reunion/welcoming-international-students/"
+   ],
+   "programs": [
+    {
+     "host_department": "LAW",
+     "ieu_department_en": "Law",
+     "ieu_department_tr": "Hukuk",
+     "ieu_faculty": "Hukuk Fakültesi",
+     "grant_quota_unit": "Hukuk Fakültesi",
+     "grant_quota_unit_seats": 3,
+     "level_en": "Undergraduate",
+     "level_tr": "Lisans",
+     "language_raw": "FRENCH",
+     "languages_tr": [
+      "Fransızca"
+     ],
+     "notes_en": "B1 level of French is recommanded.  (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)"
+    }
+   ],
+   "outermost_region": true,
+   "coords": [
+    -20.8902226,
+    55.5173184
+   ],
+   "distance_km_from_izmir": 7229,
+   "grant": {
+    "group": "1. ve 2. Grup Ülkeler",
+    "monthly_eur": 600
+   },
+   "travel_grant": {
+    "band": "4000 ila 7999 KM arasında",
+    "standard_eur": 1188,
+    "green_eur": 1188
+   },
+   "link_status": {
+    "https://www.univ-reunion.fr/en/network/come-and-study-at-the-university-of-reunion/welcoming-international-students/": 200
+   },
+   "faq": [
+    {
+     "q": "Bu okula hangi bölümlerden gidilebilir?",
+     "a": "Lisans: Hukuk",
+     "source": "İEÜ anlaşma listesi"
+    },
+    {
+     "q": "Eğitim dili ne?",
+     "a": "Fransızca — Not: B1 level of French is recommanded.  (The language of instruction may vary depending on the academic year and semester. Students are responsible for checking the host university's language of instruction, course catalogue, and other relevant academic information before applying.)",
+     "source": "İEÜ anlaşma listesi"
+    },
+    {
+     "q": "İEÜ'ye ücret ödeyecek miyim?",
+     "a": "Erasmus+ programı kapsamında yurtdışında öğrenim gören öğrenciler bu döneme ait öğretim ücretlerini akademik takvimde belirtilen tarihlere göre İEÜ’ye öderler. Yurtdışındaki üniversiteye ayrıca öğretim ücreti ödemezler. Ancak barınma, ulaşım, kişisel harcamalar, beslenme, sağlık sigortası gibi tüm masraflar öğrencinin sorumluluğundadır.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Universite de la Reunion okuluna öğrenim ücreti ödeyecek miyim?",
+     "a": "Hayır. Erasmus+ öğrencileri misafir oldukları üniversitede öğrenim ücreti ödemez. Dönem katkı payı veya öğrenci birliği gibi küçük harçlar okula göre değişebilir; bu okul için henüz veri yok.",
+     "source": "İEÜ SSS + başvuru ilanı"
+    },
+    {
+     "q": "Ne kadar hibe alırım?",
+     "a": "Fransa 1. ve 2. Grup Ülkeler içinde: aylık 600 €. Seyahat desteği (İzmir–Saint Denis De La Reunion ≈ 7229 km, okulun resmi adres şehrine göre; 4000 ila 7999 KM arasında): standart 1188 €, yeşil seyahat 1188 €. İmkânı kısıtlı öğrencilere aylık +250 € ilave destek. Hibenin %70'i gitmeden yatar, kalanı dönüşte hesaplanır. DİKKAT: Bu okul AB'nin en dış bölgelerinden birinde. Bu bölgeler için hibe kuralları farklı olabilir; İEÜ ilanında ayrı bir satır yok.",
+     "source": "İEÜ başvuru ilanı + ECHE şehir + mesafe hesabı"
+    },
+    {
+     "q": "Kontenjan kaç kişi?",
+     "a": "Okul bazındaki kontenjan TURNAPortal'da, başvuru döneminde e-Devlet ile girişte görünür: https://turnaportal.ua.gov.tr/giris?returnUrl=%2F . Bu dönemin fakülte bazında hibe kontenjanı: Hukuk Fakültesi: 3 kişi.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Başvuru şartları neler?",
+     "a": "Lisans için GNO en az 2.20, lisansüstü için en az 2.50. Onaylı İngilizce dil belgesi zorunlu. İEÜ Yabancı Diller Yüksekokulu İngilizce Hazırlık Programında veya İEÜ Lisans programlarının birinci sınıfında okuyan öğrenciler, öğrenim hareketliliğinden yararlanamaz. İkinci sınıfta Erasmus+ ve diğer uluslararası değişim programlarından yararlanabilmek için öğrenciler başvurularını öğrenimlerinin birinci yılının birinci döneminde,  genel not ortalaması (GNO) oluştuktan sonra yapabilirler.",
+     "source": "İEÜ başvuru ilanı"
+    },
+    {
+     "q": "Başvuru ne zaman?",
+     "a": "Başvuru İlan Süresi: 18 Ağustos 2026 – 21 Eylül 2026; Başvuru süresi: 7-21 Eylül 2026 (Online başvuru sistemi yalnızca 7 Eylül 2026 saat 10:00 ile 21 Eylül 2026 saat 16:59 arasında açık olacaktır.); Başvuru Sonuçlarının İlan Edilmesi: 28 Eylül 2026; İtiraz ve iptal süreci: 28 Eylül 2026– 5 Ekim 2026",
+     "source": "İEÜ başvuru ilanı"
+    }
+   ],
+   "missing": [
+    "Karşı okulun küçük harçları (dönem katkı payı, öğrenci birliği vb.)",
+    "Karşı okulun nominasyon/başvuru son tarihleri",
+    "Ders kataloğu linki",
+    "Konaklama bilgisi",
+    "Okul bazında kontenjan (TURNAPortal'da, e-Devlet ile)"
+   ]
+  }
+ ]
+}

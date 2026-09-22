@@ -1,0 +1,23 @@
+{
+	"id": "nodebb-plugin-ieu-erasmus",
+	"name": "İEÜ Erasmus+",
+	"description": "İEÜ öğrencileri için Erasmus+ sayfası: SSS, bölüm → ülke → üniversite akışı, hibe hesaplayıcı ve rota haritası.",
+	"url": "https://github.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus",
+	"library": "./library.js",
+	"hooks": [
+		{ "hook": "static:app.load", "method": "init" },
+		{ "hook": "static:api.routes", "method": "addApiRoutes" },
+		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
+		{ "hook": "filter:navigation.available", "method": "addNavigation" },
+		{ "hook": "action:settings.set", "method": "onSettingsSet" }
+	],
+	"modules": {
+		"../client/ieu-erasmus.js": "./static/lib/erasmus.js",
+		"ieu-erasmus/text.js": "./static/lib/text.js",
+		"../admin/plugins/ieu-erasmus.js": "./static/lib/admin.js"
+	},
+	"css": [
+		"static/css/erasmus.css"
+	],
+	"templates": "./templates"
+}

@@ -1,0 +1,31 @@
+{
+	"name": "nodebb-plugin-ieu-erasmus",
+	"version": "1.0.0",
+	"description": "İEÜ öğrencileri için Erasmus+ sayfası: sık sorulan sorular, bölüm → ülke → üniversite akışı, hibe hesaplayıcı ve rota haritası.",
+	"main": "library.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus"
+	},
+	"keywords": [
+		"nodebb",
+		"plugin",
+		"erasmus",
+		"ieu",
+		"izmir-ekonomi"
+	],
+	"license": "MIT",
+	"nbbpm": {
+		"compatibility": "^4.0.0"
+	},
+	"scripts": {
+		"test": "node --test test/*.test.js",
+		"build:map": "node scripts/build-map.mjs",
+		"build:icons": "node scripts/build-icons.mjs",
+		"preview": "node preview/build.mjs"
+	},
+	"devDependencies": {
+		"d3-geo": "^3.1.1",
+		"topojson-client": "^3.1.0"
+	}
+}

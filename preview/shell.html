@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erasmus+ | IEU Forum (önizleme)</title>
+<script>
+	// Forumun koyu/açık tercihini taklit eder. ?tema=dark|light adresle de seçilebilir.
+	(function () {
+		var saved = null;
+		var q = (location.search.match(/[?&]tema=(dark|light)/) || [])[1];
+		try { saved = q || localStorage.getItem('erx-theme'); } catch (e) {}
+		var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+		document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+	})();
+</script>
+<style>
+/*__FONTS__*/
+/*__CSS__*/
+</style>
+</head>
+<body>
+<!--__SPRITE__-->
+<a class="visually-hidden" href="#erx-main">İçeriğe geç</a>
+
+<div class="shell">
+	<nav class="shell-left" aria-label="Forum menüsü">
+		<ul class="shell-nav">
+			<li><a href="#"><svg class="i"><use href="#i-tags"/></svg><span>Ders Ara</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-house"/></svg><span>Ana Sayfa</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-list"/></svg><span>Kategoriler</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-user-group"/></svg><span>Gruplar</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-inbox"/></svg><span>Okunmamış</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-clock"/></svg><span>Güncel</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-user"/></svg><span>Kullanıcılar</span></a></li>
+			<li class="shell-nav__label">Bilgi</li>
+			<li><a href="#"><svg class="i"><use href="#i-circle-info"/></svg><span>Hakkımızda</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-gift"/></svg><span>Öğrenci Fırsatları</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-calendar-days"/></svg><span>Akademik Takvim</span></a></li>
+			<li><a href="#" aria-current="page"><svg class="i"><use href="#i-earth-europe"/></svg><span>Erasmus+</span></a></li>
+			<li class="shell-nav__label">Araçlar</li>
+			<li><a href="#"><svg class="i"><use href="#i-file-lines"/></svg><span>CV oluşturucu</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-table-cells"/></svg><span>IEU Timetable</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-mobile-screen"/></svg><span>Devamsızlık App</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-calculator"/></svg><span>IEU GPA Hesaplayıcı</span></a></li>
+			<li class="shell-nav__label">Niki</li>
+			<li><a href="#"><svg class="i"><use href="#i-mug-hot"/></svg><span>Niki Cüzdan</span></a></li>
+		</ul>
+		<a class="shell-collapse" href="#"><svg class="i"><use href="#i-angles-left"/></svg><span>Daralt</span></a>
+	</nav>
+
+	<div class="shell-center">
+		<header class="shell-top">
+			<span class="shell-brand">IEU Forum</span>
+			<button type="button" class="shell-theme" data-theme-toggle aria-label="Temayı değiştir">
+				<svg class="i i--sun"><use href="#i-sun"/></svg>
+				<svg class="i i--moon"><use href="#i-moon"/></svg>
+			</button>
+		</header>
+
+		<main id="erx-main" class="erx-main" tabindex="-1">
+			<nav class="pv-crumbs" aria-label="Konum">
+				<a href="#">Ana Sayfa</a>
+				<svg class="i" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+				<span aria-current="page">Erasmus+</span>
+			</nav>
+<!--PAGE-->
+		</main>
+	</div>
+
+	<aside class="shell-right" aria-label="Kısayollar">
+		<ul class="shell-nav">
+			<li><a href="#"><span class="shell-avatar" aria-hidden="true">S</span><span>Selam</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-magnifying-glass"/></svg><span>Arama</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-bell"/></svg><span>Bildirimler</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-comments"/></svg><span>Sohbetler</span></a></li>
+			<li><a href="#"><svg class="i"><use href="#i-pen-to-square"/></svg><span>Taslaklar</span></a></li>
+		</ul>
+	</aside>
+</div>
+
+
+<script type="application/json" id="erx-data">__DATA__</script>
+<script>
+/*__JS__*/
+</script>
+</body>
+</html>
