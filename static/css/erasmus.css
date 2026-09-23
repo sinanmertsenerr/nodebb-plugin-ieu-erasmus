@@ -141,7 +141,8 @@
 	text-decoration-color: currentColor;
 }
 
-.erx button {
+/* :where ile öncelik düşük kalır; .erx-btn gibi sınıflar rengi kendisi belirler. */
+.erx :where(button) {
 	font: inherit;
 	color: inherit;
 }
@@ -530,7 +531,7 @@
 	border: 1px solid var(--border);
 	border-radius: var(--r-pill);
 	background: var(--surface);
-	color: var(--muted);
+	color: var(--fg);
 	font-weight: 700;
 	font-size: var(--fs-sm);
 	cursor: pointer;
@@ -580,7 +581,7 @@
 	padding: 6px 14px 6px 10px;
 	margin-bottom: 14px;
 	border-radius: var(--r-pill);
-	color: var(--muted);
+	color: var(--fg);
 	font-weight: 600;
 	font-size: var(--fs-sm);
 	cursor: pointer;

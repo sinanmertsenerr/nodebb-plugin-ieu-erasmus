@@ -120,7 +120,7 @@ body {
 	color: inherit;
 }
 
-.shell button {
+.shell :where(button) {
 	font: inherit;
 	color: inherit;
 }
