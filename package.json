@@ -1,6 +1,6 @@
 {
 	"name": "nodebb-plugin-ieu-erasmus",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "İEÜ öğrencileri için Erasmus+ sayfası: sık sorulan sorular, bölüm → ülke → üniversite akışı, hibe hesaplayıcı ve rota haritası.",
 	"main": "library.js",
 	"files": [

@@ -56,6 +56,7 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 		};
 
 		// Forumun açık/koyu teması: sayfa zemininin parlaklığına bakılır.
+		let themeFadeTimer = 0;
 		function detectTheme() {
 			let node = root;
 			let bg = '';
@@ -69,7 +70,17 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 			}
 			const rgb = (bg.match(/\d+(\.\d+)?/g) || ['255', '255', '255']).slice(0, 3).map(Number);
 			const lum = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
-			root.dataset.theme = lum < 0.5 ? 'dark' : 'light';
+			const next = lum < 0.5 ? 'dark' : 'light';
+			if (root.dataset.theme === next) {
+				return;
+			}
+			// İlk boyamada geçiş yok; sonraki değişimlerde renkler yumuşakça döner.
+			if (root.dataset.theme) {
+				root.classList.add('erx--theme-fade');
+				clearTimeout(themeFadeTimer);
+				themeFadeTimer = setTimeout(() => root.classList.remove('erx--theme-fade'), 450);
+			}
+			root.dataset.theme = next;
 		}
 
 		function forumSearchUrl(s) {
@@ -94,9 +105,22 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 		}
 
 		detectTheme();
+		// Zemin renginde geçiş (transition) olabilir; birkaç kez daha bakılır.
+		const onSkin = () => {
+			detectTheme();
+			[60, 400, 900].forEach(ms => setTimeout(detectTheme, ms));
+		};
+		// Forumun güneş/ay düğmesi <html data-theme="..."> değiştirir, sayfa yenilenmez.
+		const themeWatch = new MutationObserver(onSkin);
+		themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-bs-theme', 'class'] });
+		themeWatch.observe(document.body, { attributes: true, attributeFilter: ['data-theme', 'data-bs-theme'] });
+		cleanups.push(() => {
+			themeWatch.disconnect();
+			clearTimeout(themeFadeTimer);
+			root.classList.remove('erx--theme-fade');
+		});
 		if (window.jQuery) {
 			const $w = window.jQuery(window);
-			const onSkin = () => [60, 400].forEach(ms => setTimeout(detectTheme, ms));
 			$w.on('action:skin.change', onSkin);
 			$w.one('action:ajaxify.start', teardown);
 			cleanups.push(() => $w.off('action:skin.change', onSkin));
