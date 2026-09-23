@@ -974,7 +974,9 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 				return '<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Bu okulun böyle bir ücreti olup olmadığı bilgisi bizde henüz yok.</strong></p>';
 			}
 			const scope = fp.scope === 'exchange' ? 'değişim öğrencileri için' : 'bütün öğrenciler için dönem katkı payı';
-			const extra = [fp.format === 'pdf' ? 'PDF' : '', fp.lang === 'de' ? 'Almanca' : ''].filter(Boolean);
+			// PDF bazı okullarda indirilir ve #page= kaybolur; hangi sayfaya bakılacağını ayrıca yaz.
+			const page = fp.format === 'pdf' ? (/#page=(\d+)/.exec(fp.url) || [])[1] : '';
+			const extra = [fp.format === 'pdf' ? (page ? `PDF, ${page}. sayfa` : 'PDF') : '', fp.lang === 'de' ? 'Almanca' : ''].filter(Boolean);
 			const checked = trDate(fp.checked);
 			return `<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Güncel tutarı okulun kendi sayfasından kontrol et.</strong></p>
 					<p class="erx-src" style="margin-top:8px">Sağ üstteki bağlantı: okulun kendi sayfası, ${scope}${extra.length ? ' · ' + extra.join(' · ') : ''} · ${esc(checked)} tarihinde kontrol edildi.</p>`;
