@@ -7,7 +7,7 @@
 <header class="erx-head">
 	<div>
 		<h1>Erasmus+ öğrenim hareketliliği</h1>
-		<p class="erx-lede">İzmir Ekonomi Üniversitesi (İEÜ) öğrencilerinin Erasmus+ hakkında en çok sorduğu sorular ve bölümüne göre gidebileceğin okullar.</p>
+		<p class="erx-lede">İzmir Ekonomi Üniversitesi (İEÜ) öğrencileri için Erasmus+ rehberi.</p>
 		<p class="erx-meta" data-meta>Veriler yükleniyor…</p>
 	</div>
 	<div class="erx-notice" data-status role="status"></div>
@@ -18,7 +18,7 @@
 		<svg class="i" aria-hidden="true"><use href="#erx-i-circle-info"/></svg>Genel sorular
 	</button>
 	<button type="button" role="tab" id="erx-tab-find" aria-controls="erx-panel-find" aria-selected="false" tabindex="-1" data-mode="find">
-		<svg class="i" aria-hidden="true"><use href="#erx-i-building-columns"/></svg>Bölüm ve üniversite özelinde
+		<svg class="i" aria-hidden="true"><use href="#erx-i-building-columns"/></svg><span class="erx-tabs__long">Bölüm ve üniversite özelinde</span><span class="erx-tabs__short">Bölümüne göre</span>
 	</button>
 	<span class="erx-tabs__ink" aria-hidden="true"></span>
 </div>
@@ -61,7 +61,6 @@
 		<section class="erx-panel" data-panel="1" aria-labelledby="erx-p1">
 			<div class="erx-panel__head">
 				<div class="erx-panel__title"><h2 id="erx-p1" tabindex="-1">Bölümünü seç</h2><button type="button" class="erx-reset" data-reset hidden><svg class="i" aria-hidden="true"><use href="#erx-i-rotate-left"/></svg>Seçimleri sıfırla</button></div>
-				<p class="erx-muted">Dönem: <strong data-term></strong> · sadece en güncel dönem gösterilir</p>
 			</div>
 			<div class="erx-toolbar">
 				<div class="erx-seg" role="radiogroup" aria-label="Öğrenim seviyesi" data-levels></div>
@@ -96,7 +95,7 @@
 						<tbody data-countries></tbody>
 					</table>
 					</div>
-					<p class="erx-foot-note">Aylık hibe ülke grubuna göre değişir. Uzaklık, en yakın okulun şehrine kuş uçuşu mesafedir.</p>
+					<p class="erx-foot-note">Aylık hibe ülke grubuna göre değişir.<span class="erx-hide-sm"> Uzaklık, en yakın okulun şehrine kuş uçuşu mesafedir.</span></p>
 				</div>
 				<div data-map-slot="2"></div>
 			</div>
@@ -144,7 +143,7 @@
 			<span><i style="background:var(--map-3)"></i>5 ve üzeri</span>
 			<span><i style="background:var(--fg)"></i>İzmir</span>
 		</div>
-		<figcaption id="erx-map-cap" data-map-cap></figcaption>
+		<figcaption id="erx-map-cap" class="visually-hidden" data-map-cap></figcaption>
 	</figure>
 </section>
 

@@ -130,6 +130,37 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 
 		const icon = name => `<svg class="i" aria-hidden="true"><use href="#erx-i-${name}"/></svg>`;
 
+		// Dar ekranda adımlar alt alta dizilir; kaydırma forumun yapışkan üst
+		// çubuğunun (Harmony mobil menüsü, PWA başlığı) altında durmalı. Çubuğun
+		// yüksekliği temaya göre değiştiği için ekranın en üstündeki sabit öğe ölçülür.
+		const compact = () => window.matchMedia('(max-width: 1099px)').matches;
+		function stickyOffset() {
+			let bottom = 0;
+			for (const x of [8, window.innerWidth / 2, window.innerWidth - 8]) {
+				for (let node = document.elementFromPoint(x, 2); node && node !== document.body; node = node.parentElement) {
+					const pos = window.getComputedStyle(node).position;
+					if (pos === 'fixed' || pos === 'sticky') {
+						const r = node.getBoundingClientRect();
+						if (r.top <= 2 && r.height < window.innerHeight / 3) {
+							bottom = Math.max(bottom, r.bottom);
+						}
+						break;
+					}
+				}
+			}
+			return bottom;
+		}
+		function scrollToEl(target, opts) {
+			const o = opts || {};
+			const offset = stickyOffset() + 12;
+			const top = target.getBoundingClientRect().top;
+			if (o.ifNeeded && top >= offset - 4 && top <= window.innerHeight * 0.45) {
+				return;
+			}
+			target.style.scrollMarginTop = offset + 'px';
+			target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+		}
+
 		function anim(el, frames, opts) {
 			// Gizli (ekranda çizilmeyen) öğede başlayan animasyon takılı kalıp öğeyi
 			// ilk karesinde (ör. scale(0)) bırakabiliyor; gizliyse hiç başlatılmaz.
@@ -241,9 +272,9 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 
 		function renderHead() {
 			const countries = new Set(D.schools.map(s => s.cc)).size;
-			const updated = new Date(D.meta.generatedAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
-			$('[data-meta]').textContent = `${termLabel()} dönemi · ${D.schools.length} okul · ${countries} ülke · Veri ${updated} tarihinde güncellendi`;
-			$('[data-term]').textContent = termLabel();
+			// Tarih bölünmesin (dar ekranda "23 / Eylül 2026" diye kırılıyordu).
+			const updated = new Date(D.meta.generatedAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }).replace(/ /g, '\u00a0');
+			$('[data-meta]').textContent = `${termLabel()} · ${D.schools.length} okul · ${countries} ülke · Güncelleme: ${updated}`;
 
 			const cal = Object.fromEntries(G.calendar.map(c => [c.label, parseTrDates(c.value)]));
 			const apply = cal['Başvuru süresi'] || [];
@@ -342,6 +373,8 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 			});
 			if (o.force) {
 				$$('[data-view]').forEach((v) => { v.hidden = v !== to; });
+			} else {
+				scrollToEl($('.erx-tabs'), { ifNeeded: true });
 			}
 			writeHash();
 		}
@@ -409,9 +442,11 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 			};
 			swap(o.instant ? null : from, to, dir, after);
 			if (!o.instant) {
-				const top = $('.erx-steps').getBoundingClientRect().top;
-				if (top < 0 || top > window.innerHeight * 0.5) {
-					$('.erx-steps').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+				// Paneller aynı yerde durur; yeni panel görünmeden önce de konumu bellidir.
+				if (compact()) {
+					scrollToEl($('[data-stage]'));
+				} else {
+					scrollToEl($('.erx-steps'), { ifNeeded: true });
 				}
 			}
 			writeHash();
@@ -769,7 +804,7 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 		function renderUnis() {
 			const list = schoolsInCountry();
 			const row = currentCountry();
-			$('[data-p3-sub]').textContent = `${locative(row.country)} ${state.dept} (${lvl(state.level)}) için ${list.length} okul var. İzmir'e en yakın olan en üstte.`;
+			$('[data-p3-sub]').textContent = `${locative(row.country)} ${state.dept} (${lvl(state.level)}) için ${list.length} okul var.`;
 			$('[data-unis-count]').innerHTML = `<b>${list.length}</b> okul`;
 			// Uzun listede arama kutusu çıkar; kısa listede gereksiz kalabalık olur.
 			$('[data-unis-search-wrap]').hidden = list.length <= 6;
@@ -836,8 +871,8 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 			if (state.step === 3) {
 				$$('.erx-map__dot').forEach(d => d.classList.toggle('is-hot', d.dataset.id === id));
 				drawRoute(id, true);
-				if (window.matchMedia('(max-width: 1099px)').matches && !o.quiet) {
-					$('[data-detail]').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+				if (compact() && !o.quiet) {
+					scrollToEl($('[data-detail]'));
 				}
 			}
 			writeHash();

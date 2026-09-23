@@ -20,6 +20,8 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 
 Üstteki 1-2-3 adımlarına veya başlıklara basınca o adıma dönülür. "Seçimleri sıfırla" hepsini temizler. Seçimler adrese yazılır; bağlantı forumda paylaşılınca aynı okul açılır.
 
+**Telefonda ve PWA'da.** Her adımdan sonra sayfa yeni adımın başına kayar (bölüm seçince ülke listesine, ülke seçince okul listesine, okul seçince okul bilgisine); forumun yapışkan üst menü çubuğunun altında durur. Dar ekranda sekmeler ekranı ikiye böler, ülke tablosunda uzaklık sütunu gizlenir, arama kutuları iPhone'da sayfayı büyütmez, bildirimler ekranın alt çizgisinin üstünde kalır.
+
 ![Ülke seçimi ve harita](https://raw.githubusercontent.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus/main/docs/ulke.png)
 
 **Okul bilgileri** (hepsi seçili bölüme özeldir; başka bölümün notu gösterilmez):

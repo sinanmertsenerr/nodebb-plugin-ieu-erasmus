@@ -1535,6 +1535,7 @@
 
 .erx-mini-table .num {
 	text-align: right;
+	white-space: nowrap;
 	font-variant-numeric: tabular-nums;
 }
 
@@ -2020,6 +2021,87 @@
 	background:
 		radial-gradient(90% 120% at 100% 0%, var(--accent-soft), transparent 65%),
 		var(--surface);
+}
+
+/* ------------------------------------------------ dar ekran ve PWA */
+
+/* Butonların kendi basılma efekti var; mobil tarayıcının gri parlaması gereksiz. */
+.erx {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.erx-tabs__short {
+	display: none;
+}
+
+/* PWA'da iPhone'un alt çizgisinin üstünde kalsın. */
+.erx-toast {
+	bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 720px) {
+	.erx-head {
+		margin: 12px 0 20px;
+	}
+
+	.erx-head h1 {
+		font-size: 26px;
+	}
+
+	.erx-lede {
+		font-size: var(--fs-base);
+	}
+
+	/* Sekmeler ekranı ikiye böler; uzun ad yerine kısası. */
+	.erx-tabs {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		margin-bottom: 22px;
+	}
+
+	.erx-tabs button {
+		justify-content: center;
+		padding: 10px 12px;
+	}
+
+	.erx-tabs__long,
+	.erx-hide-sm {
+		display: none;
+	}
+
+	.erx-tabs__short {
+		display: inline;
+	}
+
+	/* iOS, yazısı 16 pikselden küçük kutuya dokununca sayfayı büyütür. */
+	.erx-search input {
+		font-size: 16px;
+	}
+
+	/* Uzaklık sütunu dar ekrana sığmıyor; okul bilgisinde zaten yazıyor. */
+	.erx-table--countries th:nth-child(4),
+	.erx-table--countries td:nth-child(4) {
+		display: none;
+	}
+
+	.erx-table th {
+		padding: 12px;
+	}
+
+	.erx-crow td > * {
+		padding: 10px 12px;
+		white-space: nowrap;
+	}
+
+	.erx-crow .erx-crow__btn {
+		white-space: normal;
+	}
+
+	.erx-bar {
+		max-width: 28px;
+		margin-right: 6px;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
