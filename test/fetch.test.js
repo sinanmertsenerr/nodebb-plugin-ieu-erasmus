@@ -45,3 +45,15 @@ test('adres birleştirme sondaki eğik çizgiyi yutar', () => {
 	assert.equal(joinUrl('https://a.test/', 'meta.json'), 'https://a.test/meta.json');
 	assert.equal(joinUrl('https://a.test', 'meta.json'), 'https://a.test/meta.json');
 });
+
+test('ücret bağlantısı yalnızca https ve geçerli kapsamla kabul edilir', () => {
+	const ok = clone(sample.schools);
+	ok[0].fee_page = { url: 'https://a.test/fees#:~:text=fee', scope: 'all', checked: '2026-09-23' };
+	assert.equal(isSchools(ok), true);
+	const insecure = clone(sample.schools);
+	insecure[0].fee_page = { url: 'http://a.test/fees', scope: 'all', checked: '2026-09-23' };
+	assert.equal(isSchools(insecure), false);
+	const badScope = clone(sample.schools);
+	badScope[0].fee_page = { url: 'https://a.test/fees', scope: 'everyone', checked: '2026-09-23' };
+	assert.equal(isSchools(badScope), false);
+});

@@ -928,10 +928,10 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 				</section>
 
 				<section class="erx-d-sec">
-					<h4><span class="erx-q" aria-hidden="true">4</span>Okula ücret öder miyim?</h4>
+					<div class="erx-d-sec__head"><h4><span class="erx-q" aria-hidden="true">4</span>Okula ücret öder miyim?</h4>${feeButton(s)}</div>
 					<p><strong>Öğrenim ücreti ödemezsin.</strong> ${esc(s.name)} senden öğrenim, kayıt, sınav, laboratuvar ve kütüphane ücreti alamaz. Bu kural hibesiz gidenler için de geçerlidir.</p>
 					<p>İEÜ'ye bu dönemin öğrenim ücretini her zamanki takvime göre ödersin.</p>
-					<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Bu okulun böyle bir ücreti olup olmadığı bilgisi bizde henüz yok.</strong></p>
+					${feeBlock(s)}
 					<p class="erx-src">Kaynak: İEÜ başvuru ilanı, İEÜ Erasmus+ SSS belgesi, <a href="${esc(CHARTER_URL)}" target="_blank" rel="noopener">Erasmus+ öğrenci beyannamesi</a> (Avrupa Komisyonu).</p>
 				</section>
 
@@ -958,6 +958,27 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 				animateTrip();
 			}
 			setupCalc(s);
+		}
+
+		// Ücret tutarı gösterilmez: öğrenci güncel bilgiyi okulun kendi sayfasından
+		// okur. Bağlantı doğrudan ücretlerin anlatıldığı bölüme gider (web
+		// sayfasında vurgulanan cümleye, PDF'te ilgili sayfaya).
+		function feeBlock(s) {
+			const fp = s.feePage;
+			if (!fp) {
+				return '<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Bu okulun böyle bir ücreti olup olmadığı bilgisi bizde henüz yok.</strong></p>';
+			}
+			const scope = fp.scope === 'exchange' ? 'değişim öğrencileri için' : 'bütün öğrenciler için dönem katkı payı';
+			const extra = [fp.format === 'pdf' ? 'PDF' : '', fp.lang === 'de' ? 'Almanca' : ''].filter(Boolean);
+			const checked = new Date(fp.checked).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+			return `<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Güncel tutarı okulun kendi sayfasından kontrol et.</strong></p>
+					<p class="erx-src" style="margin-top:8px">Sağ üstteki bağlantı: okulun kendi sayfası, ${scope}${extra.length ? ' · ' + extra.join(' · ') : ''} · ${esc(checked)} tarihinde kontrol edildi.</p>`;
+		}
+
+		// Kartın sağ üstündeki küçük buton; yalnızca okulun ücret bölümü bulunduysa çıkar.
+		function feeButton(s) {
+			const fp = s.feePage;
+			return fp ? `<a class="erx-btn erx-btn--ghost erx-btn--sm erx-ext" href="${esc(fp.url)}" target="_blank" rel="noopener">Okulun ücret bilgisini aç ${icon('arrow-up-right-from-square')}</a>` : '';
 		}
 
 		// Noktalı hat soldan sağa açılır, varış noktası en sonda belirir.

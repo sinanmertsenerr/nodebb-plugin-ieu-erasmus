@@ -36,3 +36,21 @@ test('genel bilgiler ve dönem aktarılır', () => {
 	assert.ok(payload.general.travelGrant.length > 0);
 	assert.equal(payload.version, '1.0.0');
 });
+
+test('ücret bağlantısı varsa aktarılır, yoksa boş kalır', () => {
+	const withFee = JSON.parse(JSON.stringify(sample));
+	withFee.schools[0].fee_page = { url: 'https://www.fu-berlin.de/en/x.html#:~:text=Semesterticket', scope: 'exchange', format: 'html', lang: 'en', checked: '2026-09-23' };
+	const out = buildPayload({ ...withFee, map, version: '1.0.0' });
+	assert.equal(out.schools[0].feePage.scope, 'exchange');
+	assert.ok(out.schools[0].feePage.url.includes('#:~:text='));
+	assert.equal(out.schools[1].feePage, null);
+});
+
+test('okul sitesi yalnızca kesin kırıksa açılmıyor sayılır', () => {
+	const data = JSON.parse(JSON.stringify(sample));
+	const s = data.schools[0];
+	s.websites = ['https://a.test/ok', 'https://a.test/blocked', 'https://a.test/timeout', 'https://a.test/gone', 'https://a.test/down'];
+	s.link_status = { 'https://a.test/ok': 200, 'https://a.test/blocked': 403, 'https://a.test/timeout': 0, 'https://a.test/gone': 404, 'https://a.test/down': 503 };
+	const out = buildPayload({ ...data, map, version: '1.0.0' });
+	assert.deepEqual(out.schools[0].web.map(w => w.ok), [true, true, true, false, false]);
+});

@@ -1387,6 +1387,33 @@
 	margin: 0 0 12px;
 }
 
+/* Kart başlığı ile sağ üstteki küçük bağlantı aynı satırda; dar ekranda alta iner. */
+.erx-d-sec__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 8px 12px;
+	margin-bottom: 12px;
+}
+
+.erx-d-sec__head h4 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: var(--fs-lg);
+	letter-spacing: -0.01em;
+	font-weight: 800;
+	margin: 0;
+}
+
+.erx-btn--sm {
+	min-height: 34px;
+	padding: 6px 12px;
+	gap: 6px;
+	font-size: var(--fs-sm);
+}
+
 .erx-q {
 	flex: none;
 	width: 26px;
