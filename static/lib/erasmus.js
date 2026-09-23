@@ -965,20 +965,28 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 		// sayfasında vurgulanan cümleye, PDF'te ilgili sayfaya).
 		function feeBlock(s) {
 			const fp = s.feePage;
+			const trDate = d => new Date(d).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+			if (!fp && s.exchangePage) {
+				return `<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Okulun sitesinde değişim öğrencilerine özel bir ücret bilgisi bulamadık.</strong></p>
+					<p class="erx-src" style="margin-top:8px">Sağ üstteki bağlantı: okulun değişim öğrencisi sayfası · ${esc(trDate(s.exchangePage.checked))} tarihinde kontrol edildi. Emin olmak için okulun uluslararası ilişkiler ofisine sorabilirsin.</p>`;
+			}
 			if (!fp) {
 				return '<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Bu okulun böyle bir ücreti olup olmadığı bilgisi bizde henüz yok.</strong></p>';
 			}
 			const scope = fp.scope === 'exchange' ? 'değişim öğrencileri için' : 'bütün öğrenciler için dönem katkı payı';
 			const extra = [fp.format === 'pdf' ? 'PDF' : '', fp.lang === 'de' ? 'Almanca' : ''].filter(Boolean);
-			const checked = new Date(fp.checked).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+			const checked = trDate(fp.checked);
 			return `<p class="erx-warn"><strong>Okul, sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri kendi öğrencilerinden aldığı kadar senden de isteyebilir. Güncel tutarı okulun kendi sayfasından kontrol et.</strong></p>
 					<p class="erx-src" style="margin-top:8px">Sağ üstteki bağlantı: okulun kendi sayfası, ${scope}${extra.length ? ' · ' + extra.join(' · ') : ''} · ${esc(checked)} tarihinde kontrol edildi.</p>`;
 		}
 
-		// Kartın sağ üstündeki küçük buton; yalnızca okulun ücret bölümü bulunduysa çıkar.
+		// Kartın sağ üstündeki küçük buton: okulun ücret bölümü, o yoksa okulun değişim öğrencisi sayfası.
 		function feeButton(s) {
-			const fp = s.feePage;
-			return fp ? `<a class="erx-btn erx-btn--ghost erx-btn--sm erx-ext" href="${esc(fp.url)}" target="_blank" rel="noopener">Okulun ücret bilgisini aç ${icon('arrow-up-right-from-square')}</a>` : '';
+			const link = (url, label) => `<a class="erx-btn erx-btn--ghost erx-btn--sm erx-ext" href="${esc(url)}" target="_blank" rel="noopener">${label} ${icon('arrow-up-right-from-square')}</a>`;
+			if (s.feePage) {
+				return link(s.feePage.url, 'Okulun ücret bilgisini aç');
+			}
+			return s.exchangePage ? link(s.exchangePage.url, 'Okulun değişim sayfasını aç') : '';
 		}
 
 		// Noktalı hat soldan sağa açılır, varış noktası en sonda belirir.

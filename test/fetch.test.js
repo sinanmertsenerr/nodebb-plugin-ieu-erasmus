@@ -57,3 +57,16 @@ test('ücret bağlantısı yalnızca https ve geçerli kapsamla kabul edilir', (
 	badScope[0].fee_page = { url: 'https://a.test/fees', scope: 'everyone', checked: '2026-09-23' };
 	assert.equal(isSchools(badScope), false);
 });
+
+test('değişim sayfası bağlantısı isteğe bağlıdır, varsa https olmalı', () => {
+	const ok = clone(sample.schools);
+	ok[0].exchange_page = { url: 'https://a.test/incoming', checked: '2026-09-23' };
+	ok[1].exchange_page = null;
+	assert.equal(isSchools(ok), true);
+	const insecure = clone(sample.schools);
+	insecure[0].exchange_page = { url: 'http://a.test/incoming', checked: '2026-09-23' };
+	assert.equal(isSchools(insecure), false);
+	const noDate = clone(sample.schools);
+	noDate[0].exchange_page = { url: 'https://a.test/incoming' };
+	assert.equal(isSchools(noDate), false);
+});

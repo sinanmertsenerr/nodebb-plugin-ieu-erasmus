@@ -46,6 +46,14 @@ test('ücret bağlantısı varsa aktarılır, yoksa boş kalır', () => {
 	assert.equal(out.schools[1].feePage, null);
 });
 
+test('değişim sayfası varsa aktarılır, yoksa boş kalır', () => {
+	const data = JSON.parse(JSON.stringify(sample));
+	data.schools[1].exchange_page = { url: 'https://a.test/incoming', checked: '2026-09-23' };
+	const out = buildPayload({ ...data, map, version: '1.0.0' });
+	assert.deepEqual(out.schools[1].exchangePage, { url: 'https://a.test/incoming', checked: '2026-09-23' });
+	assert.equal(out.schools[0].exchangePage, null);
+});
+
 test('okul sitesi yalnızca kesin kırıksa açılmıyor sayılır', () => {
 	const data = JSON.parse(JSON.stringify(sample));
 	const s = data.schools[0];

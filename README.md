@@ -27,7 +27,7 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 - Hangi İEÜ bölümünün okuldaki hangi bölümle eşleştiği, seviye ve dil
 - Eğitim dili ve okulun İEÜ listesindeki notu
 - Hibe hesaplayıcı: ay sayısı, yeşil seyahat ve imkânı kısıtlı öğrenci desteğiyle tahmini toplam
-- Ücret kuralı: gidilen okula öğrenim ücreti ödenmez; sigorta, öğrenci birliği gibi küçük ücretler için uyarı (kaynak: Erasmus+ öğrenci beyannamesi)
+- Ücret kuralı: gidilen okula öğrenim ücreti ödenmez; sigorta, öğrenci birliği gibi küçük ücretler için uyarı (kaynak: Erasmus+ öğrenci beyannamesi). Sağ üstteki buton okulun kendi ücret bölümünü açar (web sayfasında ilgili cümleye, PDF'te ilgili sayfaya gider). Okulun sitesinde ücret bilgisi yoksa okulun değişim öğrencisi sayfasını açar.
 - Kontenjan: fakültenin bu dönemki hibe kontenjanı ve TURNAPortal bağlantısı
 - Forum: "Bu okulla ilgili konuları gör" ve "Bu okul için konu aç" (Erasmus kategorisi seçildiyse)
 
@@ -90,7 +90,7 @@ Yönetim sayfası ayrıca dönemi, okul sayısını, son kontrol ve indirme zama
 
 ```bash
 npm install          # yalnızca geliştirme araçları (d3-geo, topojson-client)
-npm test             # node:test ile 23 test
+npm test             # node:test ile 28 test
 npm run preview      # canlı veriyle tek dosyalık önizleme: preview/dist/erasmus-plugin-tasarim.html
 npm run build:map    # static/europe-map.json'u yeniden üretir (Natural Earth, world-atlas)
 npm run build:icons  # templates/partials/ieu-erasmus/icons.tpl (Font Awesome Free)
