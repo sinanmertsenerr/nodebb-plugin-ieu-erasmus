@@ -7,7 +7,7 @@
 <header class="erx-head">
 	<div>
 		<h1>Erasmus+ öğrenim hareketliliği</h1>
-		<p class="erx-lede">İEÜ öğrencilerinin Erasmus+ hakkında en çok sorduğu sorular ve bölümüne göre gidebileceğin okullar.</p>
+		<p class="erx-lede">İzmir Ekonomi Üniversitesi (İEÜ) öğrencilerinin Erasmus+ hakkında en çok sorduğu sorular ve bölümüne göre gidebileceğin okullar.</p>
 		<p class="erx-meta" data-meta>Veriler yükleniyor…</p>
 	</div>
 	<div class="erx-notice" data-status role="status"></div>

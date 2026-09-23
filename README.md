@@ -35,6 +35,8 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 
 **Forumla uyum.** Renkler, yazı tipi ve yerleşim forumun kendisinden gelir (Harmony teması, simplex kırmızısı, Inter). Sayfa forumun açık/koyu temasını kendiliğinden algılar. Bütün stiller `.erx` kök öğesinin içindedir; forumun geri kalanına dokunmaz. Animasyonlar "hareketi azalt" tercihine uyar; klavye ve ekran okuyucuyla kullanılabilir.
 
+**Arama motorları.** Sayfanın başlığı "İEÜ Erasmus+ Rehberi"; Google açıklamasında okulun bütün yazılışları geçer (İzmir Ekonomi Üniversitesi, İEÜ, IEU, IUE, Izmir University of Economics). Sayfa forumun `sitemap.xml`'ine kendiliğinden eklenir; forumda ayrıca bir ayar gerekmez.
+
 **Türkçe.** Ülke, ay ve şehir adlarına gelen ekler ünlü uyumuna göre üretilir (Portekiz'de, Ocak'ta, Çek Cumhuriyeti'nde). İEÜ belgelerindeki yazım hataları gösterilirken düzeltilir ("yurt dışı", "ana dal", ondalıkta virgül).
 
 ![Bölüm seçimi, koyu tema](docs/bolum-koyu.png)
@@ -90,7 +92,7 @@ Yönetim sayfası ayrıca dönemi, okul sayısını, son kontrol ve indirme zama
 
 ```bash
 npm install          # yalnızca geliştirme araçları (d3-geo, topojson-client)
-npm test             # node:test ile 28 test
+npm test             # node:test ile 31 test
 npm run preview      # canlı veriyle tek dosyalık önizleme: preview/dist/erasmus-plugin-tasarim.html
 npm run build:map    # static/europe-map.json'u yeniden üretir (Natural Earth, world-atlas)
 npm run build:icons  # templates/partials/ieu-erasmus/icons.tpl (Font Awesome Free)
@@ -104,6 +106,7 @@ lib/fetch.js             veri indirme ve alan alan doğrulama
 lib/view.js              sayfaya giden sade veri, ülke kodları, harita noktaları
 lib/projection.js        harita projeksiyonu (d3 ile birebir aynı sonuç, bağımlılıksız)
 lib/store.js             önbellek kararları
+lib/seo.js               sayfa başlığı, Google açıklaması, sitemap girdisi
 static/lib/erasmus.js    sayfa (forum/ieu-erasmus modülü)
 static/lib/text.js       Türkçe ekler, yazım düzeltmeleri, arama
 static/css/erasmus.css   stiller (.erx içinde)

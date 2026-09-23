@@ -10,6 +10,7 @@ const controllerHelpers = require.main.require('./src/controllers/helpers');
 const { fetchMeta, fetchDataset } = require('./lib/fetch');
 const { buildPayload } = require('./lib/view');
 const { parseRecord, shouldCheck, isUpToDate } = require('./lib/store');
+const seo = require('./lib/seo');
 const MAP = require('./static/europe-map.json');
 const { version: VERSION } = require('./package.json');
 
@@ -106,8 +107,10 @@ function refresh({ force = false } = {}) {
 async function renderPage(req, res) {
 	const settings = await plugin.getSettings();
 	const relativePath = nconf.get('relative_path');
+	// Forumun genel açıklaması yerine bu sayfanın başlığı ve açıklaması (Google sonucu).
+	res.locals.metaTags = seo.metaTags();
 	res.render('ieu-erasmus', {
-		title: 'Erasmus+',
+		title: seo.TITLE,
 		breadcrumbs: controllerHelpers.buildBreadcrumbs([{ text: 'Erasmus+' }]),
 		dataUrl: `${relativePath}/api/ieu-erasmus/data`,
 		categoryId: settings.categoryId,
@@ -182,6 +185,12 @@ plugin.addNavigation = async function (items) {
 		text: 'Erasmus+',
 	});
 	return items;
+};
+
+// Sayfa forumun sitemap.xml'ine eklenir; Google /erasmus'u kendisi bulur.
+plugin.addSitemapPage = async function (data) {
+	data.urls.push(seo.sitemapEntry(nconf.get('relative_path')));
+	return data;
 };
 
 plugin.onSettingsSet = async function ({ plugin: id }) {

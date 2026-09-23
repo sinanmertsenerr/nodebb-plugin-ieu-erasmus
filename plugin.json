@@ -9,6 +9,7 @@
 		{ "hook": "static:api.routes", "method": "addApiRoutes" },
 		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
 		{ "hook": "filter:navigation.available", "method": "addNavigation" },
+		{ "hook": "filter:sitemap.getPages", "method": "addSitemapPage" },
 		{ "hook": "action:settings.set", "method": "onSettingsSet" }
 	],
 	"modules": {
