@@ -6,7 +6,7 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 
 > Bu plugin İEÜ'nün resmî bir ürünü değildir. Bilgiler İEÜ Uluslararası İlişkiler Müdürlüğü'nün yayımladığı anlaşma listesi, başvuru ilanı ve SSS belgesinden derlenir ve her gün kontrol edilir.
 
-![Sık sorulan sorular](docs/sss.png)
+![Sık sorulan sorular](https://raw.githubusercontent.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus/main/docs/sss.png)
 
 ## Neler var
 
@@ -20,7 +20,7 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 
 Üstteki 1-2-3 adımlarına veya başlıklara basınca o adıma dönülür. "Seçimleri sıfırla" hepsini temizler. Seçimler adrese yazılır; bağlantı forumda paylaşılınca aynı okul açılır.
 
-![Ülke seçimi ve harita](docs/ulke.png)
+![Ülke seçimi ve harita](https://raw.githubusercontent.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus/main/docs/ulke.png)
 
 **Okul bilgileri** (hepsi seçili bölüme özeldir; başka bölümün notu gösterilmez):
 
@@ -31,7 +31,7 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 - Kontenjan: fakültenin bu dönemki hibe kontenjanı ve TURNAPortal bağlantısı
 - Forum: "Bu okulla ilgili konuları gör" ve "Bu okul için konu aç" (Erasmus kategorisi seçildiyse)
 
-![Üniversite bilgileri, koyu tema](docs/universite-koyu.png)
+![Üniversite bilgileri, koyu tema](https://raw.githubusercontent.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus/main/docs/universite-koyu.png)
 
 **Forumla uyum.** Renkler, yazı tipi ve yerleşim forumun kendisinden gelir (Harmony teması, simplex kırmızısı, Inter). Sayfa forumun açık/koyu temasını kendiliğinden algılar. Bütün stiller `.erx` kök öğesinin içindedir; forumun geri kalanına dokunmaz. Animasyonlar "hareketi azalt" tercihine uyar; klavye ve ekran okuyucuyla kullanılabilir.
 
@@ -39,7 +39,7 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 
 **Türkçe.** Ülke, ay ve şehir adlarına gelen ekler ünlü uyumuna göre üretilir (Portekiz'de, Ocak'ta, Çek Cumhuriyeti'nde). İEÜ belgelerindeki yazım hataları gösterilirken düzeltilir ("yurt dışı", "ana dal", ondalıkta virgül).
 
-![Bölüm seçimi, koyu tema](docs/bolum-koyu.png)
+![Bölüm seçimi, koyu tema](https://raw.githubusercontent.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus/main/docs/bolum-koyu.png)
 
 ## Veri nereden geliyor
 
@@ -66,7 +66,7 @@ NodeBB 4 ve Node.js 22 veya üstü gerekir.
 
 ```bash
 cd /path/to/nodebb
-npm install github:sinanmertsenerr/nodebb-plugin-ieu-erasmus
+npm install nodebb-plugin-ieu-erasmus
 ./nodebb build
 ./nodebb restart
 ```

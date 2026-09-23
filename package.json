@@ -3,12 +3,24 @@
 	"version": "1.0.0",
 	"description": "İEÜ öğrencileri için Erasmus+ sayfası: sık sorulan sorular, bölüm → ülke → üniversite akışı, hibe hesaplayıcı ve rota haritası.",
 	"main": "library.js",
+	"files": [
+		"library.js",
+		"plugin.json",
+		"lib/",
+		"static/",
+		"templates/"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus"
 	},
+	"homepage": "https://github.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus#readme",
+	"bugs": {
+		"url": "https://github.com/sinanmertsenerr/nodebb-plugin-ieu-erasmus/issues"
+	},
 	"keywords": [
 		"nodebb",
+		"nodebb-plugin",
 		"plugin",
 		"erasmus",
 		"ieu",
@@ -27,5 +39,8 @@
 	"devDependencies": {
 		"d3-geo": "^3.1.1",
 		"topojson-client": "^3.1.0"
+	},
+	"engines": {
+		"node": ">=22"
 	}
 }
