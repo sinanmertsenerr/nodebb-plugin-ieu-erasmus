@@ -1,13 +1,13 @@
 <!-- IMPORT partials/breadcrumbs.tpl -->
 <!-- IMPORT partials/ieu-erasmus/icons.tpl -->
 
-<div class="erx" data-erx-root data-state="loading" data-api="{dataUrl}" data-cid="{categoryId}">
+<div class="erx" data-erx-root data-state="loading" data-api="{dataUrl}" data-cid="{categoryId}" data-start="{start}">
 
 
 <header class="erx-head">
 	<div>
-		<h1>Erasmus+ öğrenim hareketliliği</h1>
-		<p class="erx-lede">İzmir Ekonomi Üniversitesi (İEÜ) öğrencileri için Erasmus+ rehberi.</p>
+		<h1 data-heading data-base="{baseHeading}">{heading}</h1>
+		<p class="erx-lede" data-lede data-base="{baseLede}">{lede}</p>
 		<p class="erx-meta" data-meta>Veriler yükleniyor…</p>
 	</div>
 	<div class="erx-notice" data-status role="status"></div>
@@ -32,7 +32,7 @@
 			<input type="search" placeholder="Sorularda ara, ör. hibe" data-faq-search autocomplete="off">
 		</label>
 	</div>
-	<div data-faq></div>
+	<div data-faq>{{faqHtml}}</div>
 	<p class="erx-empty" data-faq-empty hidden>Bu kelimeyle eşleşen soru yok.</p>
 	<div class="erx-callout erx-glow">
 		<p><strong>Kendi bölümün için bakmak ister misin?</strong> Bölümünü seç; anlaşmalı ülkeleri, okulları, eğitim dilini ve tahmini hibeyi gör.</p>
@@ -147,6 +147,7 @@
 	</figure>
 </section>
 
+{{pagesHtml}}
 <footer class="erx-sources">
 	<h2>Kaynaklar</h2>
 	<ul data-sources></ul>

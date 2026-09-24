@@ -11,6 +11,8 @@ const { fetchMeta, fetchDataset } = require('./lib/fetch');
 const { buildPayload } = require('./lib/view');
 const { parseRecord, shouldCheck, isUpToDate } = require('./lib/store');
 const seo = require('./lib/seo');
+const pages = require('./lib/pages');
+const faq = require('./static/lib/faq');
 const MAP = require('./static/europe-map.json');
 const { version: VERSION } = require('./package.json');
 
@@ -26,6 +28,7 @@ const DEFAULTS = {
 };
 
 let memo = { at: 0, record: null };
+let siteMemo = { key: '', site: null, faqHtml: '' };
 let inflight = null;
 let lastAttemptAt = 0;
 
@@ -104,17 +107,62 @@ function refresh({ force = false } = {}) {
 	return inflight;
 }
 
-async function renderPage(req, res) {
-	const settings = await plugin.getSettings();
-	const relativePath = nconf.get('relative_path');
-	// Forumun genel açıklaması yerine bu sayfanın başlığı ve açıklaması (Google sonucu).
-	res.locals.metaTags = seo.metaTags();
-	res.render('ieu-erasmus', {
-		title: seo.TITLE,
-		breadcrumbs: controllerHelpers.buildBreadcrumbs([{ text: 'Erasmus+' }]),
-		dataUrl: `${relativePath}/api/ieu-erasmus/data`,
-		categoryId: settings.categoryId,
-	});
+// Sunucuda yazılan içerik (SSS, bölüm ve okul sayfaları) için veri; yalnızca
+// veri değişince yeniden hesaplanır.
+async function loadSite({ fetchIfMissing = false } = {}) {
+	let record = await loadRecord();
+	if ((!record || !record.json) && fetchIfMissing) {
+		record = await refresh({ force: true });
+	}
+	if (!record || !record.json) {
+		return null;
+	}
+	const key = `${record.hash}-${record.version}`;
+	if (siteMemo.key !== key) {
+		const data = JSON.parse(record.json);
+		siteMemo = { key, site: pages.buildSite(data), faqHtml: faq.render(data.general, '').html };
+	}
+	return siteMemo;
+}
+
+// kind: 'main' (/erasmus), 'dept' (/erasmus/bolum/:slug), 'school' (/erasmus/okul/:slug).
+// Tarayıcıdaki sayfa hepsinde aynıdır; değişen başlık, açıklama, açılış seçimi
+// ve sunucuda yazılan içeriktir.
+function pageController(kind) {
+	return async function (req, res, next) {
+		const settings = await plugin.getSettings();
+		const relativePath = nconf.get('relative_path');
+		const loaded = await loadSite({ fetchIfMissing: kind !== 'main' });
+		let item = null;
+		if (kind !== 'main') {
+			const bySlug = loaded && (kind === 'dept' ? loaded.site.deptBySlug : loaded.site.schoolBySlug);
+			item = bySlug && bySlug.get(req.params.slug);
+			if (!item) {
+				return next();
+			}
+		}
+		const view = loaded ?
+			pages.page(loaded.site, kind, item, `${relativePath}/erasmus`) :
+			{ path: `${relativePath}/erasmus`, heading: pages.BASE_HEADING, lede: pages.BASE_LEDE, start: '', html: '' };
+		const title = view.title || seo.TITLE;
+		// Forumun genel açıklaması yerine bu sayfanın başlığı ve açıklaması (Google sonucu).
+		res.locals.metaTags = seo.metaTags({ title, description: view.description || seo.DESCRIPTION });
+		res.locals.linkTags = seo.linkTags(nconf.get('url') + view.path.slice(relativePath.length));
+		const crumbs = kind === 'main' ? [{ text: 'Erasmus+' }] : [{ text: 'Erasmus+', url: 'erasmus' }, { text: view.crumb }];
+		res.render('ieu-erasmus', {
+			title,
+			breadcrumbs: controllerHelpers.buildBreadcrumbs(crumbs),
+			dataUrl: `${relativePath}/api/ieu-erasmus/data`,
+			categoryId: settings.categoryId,
+			heading: view.heading,
+			lede: view.lede,
+			baseHeading: pages.BASE_HEADING,
+			baseLede: pages.BASE_LEDE,
+			start: view.start,
+			faqHtml: loaded ? loaded.faqHtml : '',
+			pagesHtml: view.html,
+		});
+	};
 }
 
 // Sayfanın verisi ayrı bir istekle gelir; ETag sayesinde tarayıcı veri
@@ -155,7 +203,9 @@ async function renderAdmin(req, res) {
 }
 
 plugin.init = async function ({ router }) {
-	routeHelpers.setupPageRoute(router, '/erasmus', [], renderPage);
+	routeHelpers.setupPageRoute(router, '/erasmus', [], pageController('main'));
+	routeHelpers.setupPageRoute(router, '/erasmus/bolum/:slug', [], pageController('dept'));
+	routeHelpers.setupPageRoute(router, '/erasmus/okul/:slug', [], pageController('school'));
 	router.get('/api/ieu-erasmus/data', (req, res, next) => serveData(req, res).catch(next));
 	routeHelpers.setupAdminPageRoute(router, '/admin/plugins/ieu-erasmus', [], renderAdmin);
 	// Sunucu açılırken önbelleği ısıt; sayfa ilk ziyarette beklemesin.
@@ -187,9 +237,15 @@ plugin.addNavigation = async function (items) {
 	return items;
 };
 
-// Sayfa forumun sitemap.xml'ine eklenir; Google /erasmus'u kendisi bulur.
+// Sayfalar forumun sitemap.xml'ine eklenir; Google /erasmus'u, bölüm ve okul
+// sayfalarını kendisi bulur.
 plugin.addSitemapPage = async function (data) {
-	data.urls.push(seo.sitemapEntry(nconf.get('relative_path')));
+	const relativePath = nconf.get('relative_path');
+	data.urls.push(seo.sitemapEntry(relativePath));
+	const loaded = await loadSite().catch(() => null);
+	if (loaded) {
+		data.urls.push(...seo.sitemapEntries(relativePath, pages.sitemapPaths(loaded.site, '/erasmus')));
+	}
 	return data;
 };
 

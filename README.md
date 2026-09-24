@@ -37,7 +37,7 @@ Sayfa iki şey yapar: İEÜ'nün Erasmus+ hakkında en çok sorulan sorularını
 
 **Forumla uyum.** Renkler, yazı tipi ve yerleşim forumun kendisinden gelir (Harmony teması, simplex kırmızısı, Inter). Sayfa forumun açık/koyu temasını kendiliğinden algılar. Bütün stiller `.erx` kök öğesinin içindedir; forumun geri kalanına dokunmaz. Animasyonlar "hareketi azalt" tercihine uyar; klavye ve ekran okuyucuyla kullanılabilir.
 
-**Arama motorları.** Sayfanın başlığı "İEÜ Erasmus+ Rehberi"; Google açıklamasında okulun bütün yazılışları geçer (İzmir Ekonomi Üniversitesi, İEÜ, IEU, IUE, Izmir University of Economics). Sayfa forumun `sitemap.xml`'ine kendiliğinden eklenir; forumda ayrıca bir ayar gerekmez.
+**Arama motorları.** Sayfanın başlığı "İEÜ Erasmus+ Rehberi"; Google açıklamasında okulun bütün yazılışları geçer (İzmir Ekonomi Üniversitesi, İEÜ, IEU, IUE, Izmir University of Economics). Her bölümün ve okulun kendi sayfası vardır: `/erasmus/bolum/isletme`, `/erasmus/bolum/isletme-mba-yuksek-lisans`, `/erasmus/okul/aalen-university`. Her birinin kendi başlığı, açıklaması ve asıl adresi (canonical) olur, ayrı bir arama sonucu olarak çıkabilir. Sorular, bölümün okul listesi ve okulun bilgileri sunucuda HTML'e yazılır; arama motoru JavaScript'i beklemeden okur. Sayfa açılınca araç aynı bölüm veya okulla açılır. Bütün adresler forumun `sitemap.xml`'ine kendiliğinden eklenir; forumda ayrıca bir ayar gerekmez.
 
 **Türkçe.** Ülke, ay ve şehir adlarına gelen ekler ünlü uyumuna göre üretilir (Portekiz'de, Ocak'ta, Çek Cumhuriyeti'nde). İEÜ belgelerindeki yazım hataları gösterilirken düzeltilir ("yurt dışı", "ana dal", ondalıkta virgül).
 
@@ -94,8 +94,9 @@ Yönetim sayfası ayrıca dönemi, okul sayısını, son kontrol ve indirme zama
 
 ```bash
 npm install          # yalnızca geliştirme araçları (d3-geo, topojson-client)
-npm test             # node:test ile 31 test
+npm test             # node:test ile 42 test
 npm run preview      # canlı veriyle tek dosyalık önizleme: preview/dist/erasmus-plugin-tasarim.html
+PAGE=bolum/isletme npm run preview   # bölüm veya okul sayfasının önizlemesi (PAGE=okul/aalen-university)
 npm run build:map    # static/europe-map.json'u yeniden üretir (Natural Earth, world-atlas)
 npm run build:icons  # templates/partials/ieu-erasmus/icons.tpl (Font Awesome Free)
 ```
@@ -108,8 +109,10 @@ lib/fetch.js             veri indirme ve alan alan doğrulama
 lib/view.js              sayfaya giden sade veri, ülke kodları, harita noktaları
 lib/projection.js        harita projeksiyonu (d3 ile birebir aynı sonuç, bağımlılıksız)
 lib/store.js             önbellek kararları
-lib/seo.js               sayfa başlığı, Google açıklaması, sitemap girdisi
+lib/seo.js               sayfa başlığı, Google açıklaması, canonical, sitemap girdileri
+lib/pages.js             bölüm ve okul sayfaları: adresler, başlıklar, sunucuda yazılan içerik
 static/lib/erasmus.js    sayfa (forum/ieu-erasmus modülü)
+static/lib/faq.js        genel sorular (sunucu ve tarayıcı ortak kullanır)
 static/lib/text.js       Türkçe ekler, yazım düzeltmeleri, arama
 static/css/erasmus.css   stiller (.erx içinde)
 static/europe-map.json   önceden çizilmiş Avrupa haritası

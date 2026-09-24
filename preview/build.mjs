@@ -5,6 +5,7 @@
 // Çalıştır: npm run preview
 //   DATA_URL=https://erasmus-data.sinansener.com (varsayılan)
 //   OUT=/yol/dosya.html (isteğe bağlı ek kopya)
+//   PAGE=bolum/isletme veya PAGE=okul/aalen-university (bölüm/okul sayfası; varsayılan /erasmus)
 import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -13,6 +14,9 @@ import { sprite, faSvg } from '../scripts/build-icons.mjs';
 const require = createRequire(import.meta.url);
 const { buildPayload } = require('../lib/view.js');
 const { fetchMeta, fetchDataset } = require('../lib/fetch.js');
+const pages = require('../lib/pages.js');
+const faq = require('../static/lib/faq.js');
+const { esc } = require('../static/lib/text.js');
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname), '..');
 const CACHE = path.join(ROOT, 'preview', '.cache');
@@ -62,18 +66,34 @@ async function main() {
 	const { version } = JSON.parse(await read('package.json'));
 	const data = buildPayload({ meta, general, schools, map, version });
 
-	const [shell, shellCss, pageCss, tpl, icons, textJs, pageJs, fonts, shellSprite] = await Promise.all([
+	const [shell, shellCss, pageCss, tpl, icons, textJs, faqJs, pageJs, fonts, shellSprite] = await Promise.all([
 		read('preview/shell.html'), read('preview/shell.css'), read('static/css/erasmus.css'),
 		read('templates/ieu-erasmus.tpl'), read('templates/partials/ieu-erasmus/icons.tpl'),
-		read('static/lib/text.js'), read('static/lib/erasmus.js'), fontFaces(), sprite(SHELL_ICONS, 'i-'),
+		read('static/lib/text.js'), read('static/lib/faq.js'), read('static/lib/erasmus.js'), fontFaces(), sprite(SHELL_ICONS, 'i-'),
 	]);
+
+	// Sunucunun yazdığı içerik (library.js'deki gibi): SSS, bölüm/okul özeti, dizin.
+	const site = pages.buildSite(data);
+	const [kind, slug] = (process.env.PAGE || '').split('/');
+	const item = kind === 'bolum' ? site.deptBySlug.get(slug) : kind === 'okul' ? site.schoolBySlug.get(slug) : null;
+	if (process.env.PAGE && !item) {
+		throw new Error(`PAGE bulunamadı: ${process.env.PAGE}`);
+	}
+	const view = pages.page(site, item ? (kind === 'bolum' ? 'dept' : 'school') : 'main', item, '/erasmus');
 
 	// Benchpress şablonundaki forum parçaları önizlemede kabuk tarafından sağlanır.
 	const page = tpl
 		.replace('<!-- IMPORT partials/breadcrumbs.tpl -->', '')
 		.replace('<!-- IMPORT partials/ieu-erasmus/icons.tpl -->', () => icons)
 		.replace('{dataUrl}', '')
-		.replace('{categoryId}', '1');
+		.replace('{categoryId}', '1')
+		.replace('{start}', () => esc(view.start))
+		.replace('{heading}', () => esc(view.heading))
+		.replace('{lede}', () => esc(view.lede))
+		.replace('{baseHeading}', () => esc(pages.BASE_HEADING))
+		.replace('{baseLede}', () => esc(pages.BASE_LEDE))
+		.replace('{{faqHtml}}', () => faq.render(data.general, '').html)
+		.replace('{{pagesHtml}}', () => view.html);
 
 	// NodeBB'nin AMD yükleyicisini taklit eden küçük bir define() ve açılış.
 	const boot = `
@@ -84,6 +104,7 @@ async function main() {
 	};
 	window.define.amd = true;
 ${textJs}
+${faqJs}
 ${pageJs}
 	var root = document.querySelector('[data-erx-root]');
 	var data = JSON.parse(document.getElementById('erx-data').textContent);

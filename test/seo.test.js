@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { TITLE, DESCRIPTION, metaTags, sitemapEntry } = require('../lib/seo.js');
+const { TITLE, DESCRIPTION, metaTags, linkTags, sitemapEntry, sitemapEntries } = require('../lib/seo.js');
 
 test('açıklamada okulun bütün yazılışları geçer', () => {
 	for (const word of ['İzmir Ekonomi Üniversitesi', 'İEÜ', 'IEU', 'IUE', 'Izmir University of Economics', 'Erasmus+']) {
@@ -21,4 +21,17 @@ test('meta etiketleri forumun genel açıklamasının yerine geçer', () => {
 test('sitemap girdisi forumun alt yolunu korur', () => {
 	assert.equal(sitemapEntry('').url, '/erasmus');
 	assert.equal(sitemapEntry('/forum').url, '/forum/erasmus');
+});
+
+test('bölüm ve okul sayfaları kendi başlığını ve asıl adresini verir', () => {
+	const tags = metaTags({ title: 'İEÜ İşletme Erasmus+ Anlaşmalı Okulları', description: 'x' });
+	assert.equal(tags.find(t => t.property === 'og:title').content, 'İEÜ İşletme Erasmus+ Anlaşmalı Okulları');
+	assert.equal(tags.find(t => t.name === 'description').content, 'x');
+	assert.deepEqual(linkTags('https://forum.ieu.app/erasmus/bolum/isletme'), [{ rel: 'canonical', href: 'https://forum.ieu.app/erasmus/bolum/isletme' }]);
+});
+
+test('sitemap: bölüm sayfaları okul sayfalarından önde, alt yol korunur', () => {
+	const [dept, school] = sitemapEntries('/forum', ['/erasmus/bolum/isletme', '/erasmus/okul/aalen-university']);
+	assert.equal(dept.url, '/forum/erasmus/bolum/isletme');
+	assert.ok(dept.priority > school.priority);
 });

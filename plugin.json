@@ -15,6 +15,7 @@
 	"modules": {
 		"../client/ieu-erasmus.js": "./static/lib/erasmus.js",
 		"ieu-erasmus/text.js": "./static/lib/text.js",
+		"ieu-erasmus/faq.js": "./static/lib/faq.js",
 		"../admin/plugins/ieu-erasmus.js": "./static/lib/admin.js"
 	},
 	"css": [

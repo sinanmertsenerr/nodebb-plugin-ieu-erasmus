@@ -7,7 +7,7 @@
 // onaylanan tasarım taslağıyla birebir aynıdır; Türkçe metin yardımcıları
 // ieu-erasmus/text modülündedir.
 
-define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
+define('forum/ieu-erasmus', ['ieu-erasmus/text', 'ieu-erasmus/faq'], function (text, faq) {
 	const Page = {};
 	let cleanups = [];
 
@@ -49,7 +49,8 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 	// env: { cid, relativePath, loggedIn, preview }.
 	Page.mount = function (root, D, env) {
 		teardown();
-		const { esc, fold, highlight, locative, dative, fix, calLabel, lvl, gpa, groupLabel, uniq, eur, km, bandLabel, parseTrDates } = text;
+		const { esc, fold, highlight, locative, dative, fix, lvl, groupLabel, uniq, eur, km, bandLabel, parseTrDates } = text;
+		const { CHARTER_URL } = faq;
 		const listen = (target, type, fn) => {
 			target.addEventListener(type, fn);
 			cleanups.push(() => target.removeEventListener(type, fn));
@@ -485,6 +486,9 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 
 		function writeHash() {
 			const p = new URLSearchParams();
+			if (state.mode === 'faq' && root.dataset.start) {
+				p.set('mod', 'sss');
+			}
 			if (state.mode === 'find') {
 				p.set('mod', 'bolum');
 				p.set('adim', state.step);
@@ -499,9 +503,26 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 					p.set('okul', state.school);
 				}
 			}
-			const hash = p.toString();
+			// Bölüm veya okul sayfası kendi seçimindeyken adres temiz kalır (/erasmus/bolum/isletme).
+			const hash = p.toString() === root.dataset.start ? '' : p.toString();
 			// NodeBB ajaxify geçmiş kaydındaki durumu korunur; yalnızca adresin #'i değişir.
 			history.replaceState(history.state, '', location.pathname + location.search + (hash ? '#' + hash : ''));
+			syncLanding();
+		}
+
+		// Bölüm veya okul sayfasında öğrenci başka bir seçime geçince başlık genel
+		// başlığa döner, sayfanın altındaki o bölüme/okula ait özet gizlenir.
+		const landing = new URLSearchParams(root.dataset.start || '');
+		const headings = [$('[data-heading]'), $('[data-lede]')].filter(Boolean).map(node => ({ node, own: node.textContent }));
+		function syncLanding() {
+			if (!root.dataset.start) {
+				return;
+			}
+			const on = state.mode === 'find' && (landing.has('okul') ?
+				state.school === landing.get('okul') :
+				state.dept === landing.get('bolum') && state.level === landing.get('seviye'));
+			headings.forEach(({ node, own }) => { node.textContent = on ? own : node.dataset.base; });
+			$$('[data-landing]').forEach((el) => { el.hidden = !on; });
 		}
 
 		// ------------------------------------------------------------ adım 1: bölüm
@@ -1103,95 +1124,10 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 
 		// ------------------------------------------------------------ genel SSS
 
-		const QUESTION_TEXT = {
-			'Hibesiz Olarak Hareketlilikten Yararlanmak Mümkün mü?': 'Hibesiz gidebilir miyim?',
-			'Gidilen Ünivesiteye Ücret Ödenir mi?': 'Gideceğim okula ücret öder miyim?',
-			'Elenirsem Bir Sonraki Dönem Tekrar Başvurabilir miyim?': 'Elenirsem sonraki dönem tekrar başvurabilir miyim?',
-			'Yurtdışında alınan derslere İEÜ’de denklik veriliyor mu?': 'Yurt dışında aldığım dersler İEÜ\'de sayılır mı?',
-			'Gittiğim Üniversitede Hangi Dilde Ders Alacağım?': 'Gittiğim okulda hangi dilde ders alacağım?',
-			'Erasmus+ Programına Katılırsam Okulum Uzar mı?': 'Erasmus\'a gidersem okulum uzar mı?',
-			'ÇAP Öğrencileri Erasmus+ Programına Başvurabilir mi?': 'ÇAP öğrencileri başvurabilir mi?',
-			'Nasıl Vize Alacağım?': 'Vizeyi nasıl alırım?',
-		};
-		const ieuFaq = Object.fromEntries(G.faq.map(f => [f.q, f.a]));
-		const SRC_ILAN = 'İEÜ başvuru ilanı';
-		const CHARTER_URL = 'https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-student-charter-0';
-		const SRC_SSS = 'İEÜ Erasmus+ SSS belgesi';
-		const fromFaq = q => ({ q: QUESTION_TEXT[q] || q, a: `<p>${esc(fix(ieuFaq[q] || ''))}</p>`, src: SRC_SSS });
-
-		function faqGroups() {
-			const R = G.rules;
-			const table = (head, rows) => `<table class="erx-mini-table"><thead><tr>${head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map((c, i) => `<td${i === r.length - 1 && /€|kişi|puan/.test(c) ? ' class="num"' : ''}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-			const link = (u, t) => `<a class="erx-ext" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ${icon('arrow-up-right-from-square')}</a>`;
-			return [
-				{
-					title: 'Başvuru ve seçim',
-					icon: 'file-lines',
-					items: [
-						{ q: 'Kimler başvurabilir?', src: SRC_ILAN, a: `<p>Lisans öğrencileri için genel not ortalaması en az ${gpa(G.minGpa.lisans)}, yüksek lisans ve doktora için en az ${gpa(G.minGpa.lisansustu)} olmalı (4 üzerinden).</p><p>${esc(fix(R.first_year))}</p><p>${esc(fix(R.language_doc))}</p>` },
-						{ q: 'Başvuru takvimi nasıl?', src: SRC_ILAN, a: table(['Aşama', 'Tarih'], G.calendar.map(c => [calLabel(c.label), fix(c.value)])) },
-						{ q: 'Seçim puanı nasıl hesaplanıyor?', src: SRC_ILAN, a: `<p>${esc(fix(R.selection))}</p>${table(['Ölçüt', 'Puan'], G.scoring.map(s => [fix(s.criterion), fix(s.points)]))}` },
-						{ q: 'Okulların kontenjanını nereden görürüm?', src: SRC_ILAN, a: `<p>${esc(fix(R.school_quota))} ${link(G.links.turnaportal, 'TURNAPortal')}</p><p>Bu dönem birimlere göre hibe kontenjanı:</p>${table(['Birim', 'Kontenjan'], [...Object.entries(G.facultyQuota).map(([k, v]) => [k, v + ' kişi']), ['Toplam', G.facultyQuotaTotal + ' kişi']])}` },
-						fromFaq('Elenirsem Bir Sonraki Dönem Tekrar Başvurabilir miyim?'),
-						fromFaq('ÇAP Öğrencileri Erasmus+ Programına Başvurabilir mi?'),
-					],
-				},
-				{
-					title: 'Hibe ve ücretler',
-					icon: 'euro-sign',
-					items: [
-						{ q: 'Aylık hibe ne kadar?', src: SRC_ILAN, a: table(['Grup', 'Ülkeler', 'Aylık'], G.monthlyGrant.map(g => [groupLabel(g.group), g.countries.join(', '), eur(g.eur)])) },
-						{ q: 'Seyahat desteği ne kadar?', src: SRC_ILAN, a: `<p>İzmir ile okulun şehri arasındaki mesafeye göre tek sefer ödenir; gidişi ve dönüşü kapsar. Yeşil seyahat otobüs, tren veya paylaşımlı araçla yapılan yolculuktur.</p>${table(['Mesafe', 'Standart', 'Yeşil'], G.travelGrant.map(b => [bandLabel(b), eur(b.standard_eur), eur(b.green_eur)]))}` },
-						{ q: 'İmkânı kısıtlı öğrencilere ek destek var mı?', src: SRC_ILAN, a: `<p>Evet. Durumunu belgeleyen öğrenciye aylık ${eur(G.fewerOpportunitiesEur)} ilave hibe verilir.</p>` },
-						{ q: 'Hibe ne zaman ödenir?', src: SRC_ILAN, a: `<p>${esc(fix(R.payment))}</p><p>${esc(fix(R.two_thirds))}</p>` },
-						{ q: 'İEÜ\'ye ücret öder miyim?', src: SRC_ILAN, a: `<p>${esc(fix(R.tuition))}</p>` },
-						{ q: QUESTION_TEXT['Gidilen Ünivesiteye Ücret Ödenir mi?'], src: SRC_SSS + ', Erasmus+ öğrenci beyannamesi', a: `<p>${esc(fix(ieuFaq['Gidilen Ünivesiteye Ücret Ödenir mi?'] || ''))}</p><p>Gidilen okul öğrenim, kayıt, sınav, laboratuvar ve kütüphane ücreti alamaz. Bu kural hibesiz gidenler için de geçerlidir.</p><p class="erx-warn"><strong>Sigorta, öğrenci birliği üyeliği veya ders malzemesi gibi küçük ücretleri ise okul kendi öğrencilerinden aldığı kadar senden de isteyebilir. Gideceğin okulun sayfasından kontrol et.</strong></p>` },
-						fromFaq('Hibesiz Olarak Hareketlilikten Yararlanmak Mümkün mü?'),
-					],
-				},
-				{
-					title: 'Dersler ve denklik',
-					icon: 'graduation-cap',
-					items: [
-						fromFaq('Yurtdışında alınan derslere İEÜ’de denklik veriliyor mu?'),
-						{ q: 'Kaç AKTS ders almalıyım?', src: SRC_ILAN, a: `<p>${esc(fix(R.ects))}</p>` },
-						fromFaq('Gittiğim Üniversitede Hangi Dilde Ders Alacağım?'),
-						fromFaq('Erasmus+ Programına Katılırsam Okulum Uzar mı?'),
-					],
-				},
-				{
-					title: 'Vize ve hazırlık',
-					icon: 'plane-departure',
-					items: [
-						fromFaq('Nasıl Vize Alacağım?'),
-						{ q: 'Konaklama ve diğer masraflar kime ait?', src: SRC_ILAN, a: `<p>${esc(fix(R.costs))}</p>` },
-						{ q: 'Hangi belgeler işime yarar?', src: 'İEÜ Erasmus+ sayfası', a: `<ul>${Object.entries(G.links.documents).map(([t, u]) => `<li>${link(u, fix(t))}</li>`).join('')}<li>${link(G.links.department_coordinators, 'Bölüm Erasmus koordinatörleri')}</li></ul>` },
-					],
-				},
-			];
-		}
-
+		// Sorular ieu-erasmus/faq modülünde; sunucu aynı HTML'i sayfaya baştan yazar.
 		function renderFaq() {
-			const q = $('[data-faq-search]').value.trim();
-			let any = false;
-			$('[data-faq]').innerHTML = faqGroups().map((g) => {
-				const items = g.items.filter(it => !q || fold(it.q + ' ' + it.a.replace(/<[^>]+>/g, ' ')).includes(fold(q)));
-				if (!items.length) {
-					return '';
-				}
-				any = true;
-				return `<section class="erx-faq-group erx-glow">
-					<header class="erx-faq-group__head">
-						<span class="erx-faq-group__icon" aria-hidden="true">${icon(g.icon)}</span>
-						<h3>${esc(g.title)}</h3>
-						<span class="erx-pill"><b>${items.length}</b> soru</span>
-					</header>
-					<div class="erx-faq-group__list">${items.map(it => `
-					<details class="erx-qa"${q ? ' open' : ''}>
-						<summary>${highlight(it.q, q)} ${icon('chevron-down')}</summary>
-						<div class="erx-qa__a">${it.a}<p class="erx-src">Kaynak: ${esc(it.src)}</p></div>
-					</details>`).join('')}</div></section>`;
-			}).join('');
+			const { html, any } = faq.render(G, $('[data-faq-search]').value.trim());
+			$('[data-faq]').innerHTML = html;
 			$('[data-faq-empty]').hidden = any;
 		}
 
@@ -1348,8 +1284,11 @@ define('forum/ieu-erasmus', ['ieu-erasmus/text'], function (text) {
 			listen(document, 'erx:theme', detectTheme);
 		}
 
+		// Adresin #'i yoksa bölüm veya okul sayfasının açılış seçimi kullanılır
+		// (sunucu data-start'a yazar; /erasmus'ta boştur).
 		function restoreFromHash() {
-			const p = new URLSearchParams(location.hash.slice(1));
+			const hash = new URLSearchParams(location.hash.slice(1));
+			const p = hash.has('mod') ? hash : new URLSearchParams(root.dataset.start || '');
 			if (p.get('mod') !== 'bolum') {
 				return;
 			}

@@ -1979,6 +1979,124 @@
 	color: var(--muted);
 }
 
+/* ------------------------------------------------ bölüm ve okul sayfaları */
+
+/* Sunucuda yazılır: bölüm/okul sayfasının özeti ve bütün sayfalara giden dizin.
+   Sayfa açılırken araç henüz yokken görünüp sonra aşağı kaymasın diye beklenir. */
+.erx[data-state='loading'] .erx-pages {
+	display: none;
+}
+
+.erx-pages {
+	margin-top: 48px;
+}
+
+.erx-pages > h2 {
+	font-size: var(--fs-xl);
+	font-weight: 800;
+	letter-spacing: -0.01em;
+	margin: 0 0 8px;
+}
+
+.erx-pages > h3 {
+	font-size: var(--fs-lg);
+	font-weight: 700;
+	margin: 22px 0 8px;
+}
+
+.erx-pages > p {
+	max-width: 70ch;
+}
+
+.erx-pages .erx-warn {
+	margin: 0 0 14px;
+}
+
+/* Sütunlar gazete gibi dolar: uzun ülke listesi (Almanya) yanında boşluk bırakmaz. */
+.erx-pages__countries {
+	columns: 4 240px;
+	column-gap: 28px;
+	margin-top: 16px;
+}
+
+.erx-pages__countries > div {
+	break-inside: avoid;
+	margin-bottom: 20px;
+}
+
+.erx-pages__countries h3,
+.erx-pages__countries h4 {
+	font-size: var(--fs-base);
+	font-weight: 700;
+	margin: 0 0 6px;
+}
+
+.erx-pages__countries h3 .erx-muted {
+	display: block;
+	font-size: var(--fs-xs);
+	font-weight: 500;
+}
+
+.erx-pages__links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 5px;
+	font-size: var(--fs-sm);
+}
+
+.erx-pages__links .erx-muted {
+	font-size: var(--fs-xs);
+}
+
+.erx-pages .erx-qa--inline > .erx-pages__links {
+	display: block;
+	columns: 3 220px;
+	column-gap: 28px;
+	padding: 0 18px 14px;
+}
+
+.erx-pages .erx-qa--inline > .erx-pages__links li {
+	break-inside: avoid;
+	margin-bottom: 5px;
+}
+
+.erx-pages .erx-qa--inline > .erx-pages__countries {
+	margin-top: 0;
+	padding: 0 18px 0;
+}
+
+.erx-pages__facts {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+	gap: 10px;
+	margin: 14px 0 18px;
+}
+
+.erx-pages__facts div {
+	background: var(--surface-2);
+	border-radius: var(--r-md);
+	padding: 10px 14px;
+}
+
+.erx-pages__facts dt {
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	color: var(--muted);
+}
+
+.erx-pages__facts dd {
+	margin: 2px 0 0;
+	font-weight: 700;
+}
+
+/* Dar ekranda dört sütunlu tablo sayfayı yana taşırmasın. */
+.erx-pages__table {
+	overflow-x: auto;
+	margin-bottom: 14px;
+}
+
 /* ------------------------------------------------------------- kaynaklar */
 
 .erx-sources {
